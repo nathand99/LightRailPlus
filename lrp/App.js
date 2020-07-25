@@ -2,11 +2,20 @@ import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { AppLoading } from 'expo';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import logo from './assets/logo.png';
+
+import {
+  useFonts,
+  Roboto_400Regular,
+  Roboto_500Medium,
+  Roboto_700Bold,
+  Roboto_900Black,
+} from '@expo-google-fonts/roboto';
 
 const Stack = createStackNavigator();
 
@@ -19,8 +28,8 @@ function HomeScreen() {
         <View style={styles.logoContainer}>
           <Image source={logo} style={styles.logoImageContainer} />
           <Text style={styles.logoText}>
-            Light {"\n"}
-            Rail +
+            LIGHT {"\n"}
+            RAIL+
           </Text>
         </View>
 
@@ -28,17 +37,17 @@ function HomeScreen() {
         <TouchableOpacity
           onPress={() => alert('Hello, world!')}
           style={styles.button}>
-          <Text style={styles.buttonText}>Sign Up</Text>
+          <Text style={styles.buttonText}>SIGN UP</Text>
         </TouchableOpacity>
 
         {/* Log In Button */}
         <TouchableOpacity
           onPress={() => alert('Hello, world!')}
           style={styles.button}>
-          <Text style={styles.buttonText}>Log In</Text>
+          <Text style={styles.buttonText}>LOG IN</Text>
         </TouchableOpacity>
 
-        <StatusBar style="auto" />
+        <StatusBar style="light" />
 
     </View>
 
@@ -46,15 +55,36 @@ function HomeScreen() {
 }
 
 export default function App() {
+
+  // Handling Fonts
+  let [fontsLoaded] = useFonts({
+    Roboto_400Regular,
+    Roboto_500Medium,
+    Roboto_700Bold,
+    Roboto_900Black,
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
   return (
     <NavigationContainer>
       
-      <Stack.Navigator>
-        <Stack.Screen name="Note to Self: Get rid of this bar" component={HomeScreen} />
+      <Stack.Navigator
+
+
+      screenOptions={{
+        headerShown: false,
+      }}
+
+      >
+        <Stack.Screen name="Home" component={HomeScreen} />
       </Stack.Navigator>
 
     </NavigationContainer>
   );
+
 }
 
 const styles = StyleSheet.create({
@@ -71,6 +101,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+
+    height: '65%',
   },
 
   button: {
@@ -87,11 +119,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
 
     backgroundColor: '#ececec',
+    shadowOffset:{  width: 0,  height: 4,  },
+    shadowColor: 'black',
+    shadowOpacity: 0.25,
   },
 
   buttonText: {
     color: '#c34242',
     fontSize: 28,
+    fontFamily: 'Roboto_700Bold',
   },
 
   logoImageContainer: {
@@ -102,6 +138,11 @@ const styles = StyleSheet.create({
   logoText: {
     fontSize: 48,
     color: '#ececec',
+    fontFamily: 'Roboto_700Bold',
+
+    shadowOffset:{  width: 0,  height: 4,  },
+    shadowColor: 'black',
+    shadowOpacity: 0.25,
   }
 
 });
