@@ -1,6 +1,75 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Button, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
+
+function TravelMain({ navigation }) {
+    return (
+      <ScrollView contentContainerStyle={travelStyles.tcontainer} showsVerticalScrollIndicator={false}>
+        
+        <View style={travelStyles.theader}>
+            <Text style={travelStyles.theaderTitle}>NEW TRIP</Text>
+        </View>
+
+        <View style={travelStyles.destinationContainer}>
+            <Text style={travelStyles.destinationHeader}>From</Text>
+            <View style={travelStyles.textBoxContainer}>
+                <TextInput style={travelStyles.destinationTextBox}/>
+                <Ionicons style={{marginTop: 3,}} name={"md-locate"} size={25} color={"#c34242"}/>
+            </View>
+
+            <Text style={travelStyles.destinationHeader}>TO</Text>
+            <View style={travelStyles.textBoxContainer}>
+                <TextInput style={travelStyles.destinationTextBox}/>
+            </View>
+
+            <TouchableOpacity
+                onPress={() => navigation.navigate('Timetable')}
+                style={travelStyles.button}>
+                <Text style={travelStyles.buttonText}>VIEW TIMETABLE</Text>
+            </TouchableOpacity>
+
+        </View>
+
+        <View style={travelStyles.theader}>
+            <Text style={travelStyles.theaderTitle}>FAVOURITES</Text>
+        </View>
+        <View style={travelStyles.tMenu}>
+            <Text style={travelStyles.tmenuText}>You haven't favourited a trip yet!</Text>
+        </View>
+
+        <View style={travelStyles.theader}>
+            <Text style={travelStyles.theaderTitle}>RECENTS</Text>
+        </View>
+        <View style={travelStyles.tMenu}>
+            <Text style={travelStyles.tmenuText}>You haven't been on a trip yet!</Text>
+        </View>
+
+        <StatusBar style="light" />
+
+      </ScrollView>
+    );
+}
+
+function TravelTimetable() {
+    return (
+      <ScrollView contentContainerStyle={travelStyles.tcontainer} showsVerticalScrollIndicator={false}>
+        
+        <View style={travelStyles.theader}>
+            <Text style={travelStyles.theaderTitle}>It's time to t-t-t-t-timetable!</Text>
+        </View>
+
+      </ScrollView>
+    );
+}
+
+  
 
 // Screen code
 export default class TravelScreen extends React.Component {
@@ -11,16 +80,51 @@ export default class TravelScreen extends React.Component {
 
     render() {
         return (
-            <View style={styles.container}>
+    
+            <NavigationContainer independent={true}>
+                <Stack.Navigator
+
+                    screenOptions={{
+
+                        headerBackTitleVisible: false,
+                        headerLeft: () => (<View/>),
                 
-                {/* Logo Container */}
-                <Text style={{color: 'black',}}>
-                    Travel Screen               
-                </Text>
+                        headerStyle: {
 
-                <StatusBar style="dark" />
+                            backgroundColor: '#c34242',
+                            height: 115,
+                            
+                            shadowOffset:{ width: 0,  height: 4 },
+                            shadowColor: 'black',
+                            shadowOpacity: 0.25,
+                            shadowRadius: 4,
+                            elevation: 1,
 
-            </View>
+                            
+                        },
+
+                        headerTintColor: '#ececec',
+
+                        headerTitleStyle: {
+
+                            fontFamily: 'Roboto_700Bold',
+                            fontSize: 32,
+                            textTransform: "uppercase",
+
+                            shadowOffset:{ width: 0,  height: 4 },
+                            shadowColor: 'black',
+                            shadowOpacity: 0.25,
+                            shadowRadius: 4,
+                            elevation: 1,
+                        },
+                        
+                    }}
+                >
+                    <Stack.Screen name="Travel" component={TravelMain} />
+                    <Stack.Screen name="Timetable" component={TravelTimetable} />
+                </Stack.Navigator>
+            </NavigationContainer>
+      
         );
     }
 
@@ -36,4 +140,139 @@ container: {
     justifyContent: 'center',
 },
 
+});
+
+
+const travelStyles = StyleSheet.create({
+
+    tcontainer: {
+
+        display: 'flex',
+        alignItems: 'center',
+
+        backgroundColor: '#ececec',
+
+    },
+
+    destinationContainer: {
+
+        display: 'flex',
+        
+        backgroundColor: '#ececec',
+        padding: '5%',
+        width: '100%',
+
+    },
+
+    destinationHeader: {
+
+        fontFamily: 'Roboto_700Bold',
+        fontSize: 24,
+        textTransform: "uppercase",
+
+        color: "#c34242",
+
+        paddingBottom: 10,
+
+    },
+
+    textBoxContainer: {
+        
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: "center",
+        
+        borderWidth: 2,
+        borderColor: '#c34242',
+        borderRadius: 4,
+        
+        width: '100%',
+        height: 50,
+        marginBottom: 25,
+        
+    },
+
+    destinationTextBox: {
+
+        height: 45,
+        backgroundColor: '#eaeaea',
+
+
+        padding: 10,
+        fontSize: 20,
+
+        width: '90%',
+
+    },
+
+
+    theader: {
+
+        display: 'flex',
+        justifyContent: 'center',
+        
+        paddingLeft: 12,
+        
+        height: 65,
+        width: '100%',
+        
+        backgroundColor: "#c34242",
+
+    },
+
+    theaderTitle: {
+
+        fontFamily: 'Roboto_700Bold',
+        fontSize: 30,
+        textTransform: "uppercase",
+
+        shadowOffset:{ width: 0,  height: 4 },
+        shadowColor: 'black',
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 1,
+
+        color: '#ececec',
+
+    },
+
+    button: {
+
+        width: 300,
+        height: 55,
+    
+        margin: 10,
+    
+        borderRadius: 5000,
+    
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        alignSelf: 'center',
+    
+        backgroundColor: '#c34242',
+
+    },
+    
+    buttonText: {
+        color: '#ececec',
+        fontSize: 28,
+        fontFamily: 'Roboto_700Bold',
+    },
+
+    tMenu: {
+
+        display: 'flex',
+        justifyContent: 'center',
+        
+        paddingLeft: 12,
+        
+        height: 65,
+        width: '100%',
+        
+        backgroundColor: "#ececec",
+
+    }
+    
+    
 });

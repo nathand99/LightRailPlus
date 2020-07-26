@@ -83,6 +83,7 @@ button: {
     shadowOffset:{  width: 0,  height: 4,  },
     shadowColor: 'black',
     shadowOpacity: 0.25,
+    shadowRadius: 4,
 },
 
 buttonText: {

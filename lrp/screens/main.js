@@ -60,6 +60,12 @@ export default class MainScreen extends React.Component {
 
                         style: {
                             height: 110,
+                            borderTopWidth: 0,
+                            shadowOffset:{ width: 0,  height: -2 },
+                            shadowColor: 'black',
+                            shadowOpacity: 0.25,
+                            shadowRadius: 4,
+                            elevation: 1,
                         },
 
                         tabStyle: {
