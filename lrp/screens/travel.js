@@ -1,6 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Button, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import MapView from 'react-native-maps';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -59,13 +60,24 @@ function TravelMain({ navigation }) {
 
 function TravelTimetable() {
     return (
-      <ScrollView contentContainerStyle={travelStyles.tcontainer} showsVerticalScrollIndicator={false}>
+      <View style={travelStyles.tcontainer}>
         
-        <View style={travelStyles.theader}>
-            <Text style={travelStyles.theaderTitle}>It's time to t-t-t-t-timetable!</Text>
+        <View style={travelStyles.dheader}>
+            <Text style={travelStyles.dheaderTitle}>A to B</Text>
         </View>
 
-      </ScrollView>
+        <MapView style={travelStyles.mapStyle}
+            initialRegion={{
+                latitude: -33.884106,
+                longitude: 151.2081233,
+                latitudeDelta: 0.006,
+                longitudeDelta: 0.006,
+            }}
+
+            showsUserLocation={true}
+        />
+
+      </View>
     );
 }
 
@@ -231,10 +243,46 @@ const travelStyles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 1,
+        zIndex: 1,
 
         color: '#ececec',
 
     },
+
+    dheader: {
+
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        
+        height: 60,
+        width: '100%',
+        
+        backgroundColor: "#e5e5e5",
+
+        shadowOffset:{ width: 0,  height: 4 },
+        shadowColor: 'black',
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 1,
+        zIndex: 1,
+
+    },
+
+    dheaderTitle: {
+
+        fontFamily: 'Roboto_700Bold',
+        fontSize: 28,
+
+
+        color: '#242424',
+
+    },
+
+    mapStyle: {
+        width: '100%',
+        height: 250,
+    },    
 
     button: {
 
