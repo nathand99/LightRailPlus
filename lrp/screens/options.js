@@ -1,8 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View, ScrollView} from 'react-native';
-
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { StyleSheet, Text, TouchableOpacity, View, ScrollView, Switch, Image} from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -79,9 +77,57 @@ function OptionsMain({ navigation }) {
 }
 
 function OptionsPayment() {
+
+    const [isSwitchOn, setIsSwitchOn] = React.useState(false);
+    const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
+
     return (
-        <View>
-            <Text>Change Payment Details</Text>
+        <View style={optionsStyles.container}>
+            <View>
+                {/* to change */}
+                <Text style={optionsStyles.subheader}>
+                    Payment Details                    Edit
+                </Text>
+            </View>
+            <View style={optionsStyles.lightRow}>
+                <View>
+                    <Image 
+                        style={{width: 40,height: 25}} 
+                        source={require('./images/mastercard_logo.png')} 
+                    />
+                </View>
+                <View>
+                    <Text style={optionsStyles.paymentText}>MasterCard</Text>
+                    <Text style={optionsStyles.paymentSubtext}>**** 1234</Text>
+                </View>
+            </View>
+            <View style={optionsStyles.darkRow}>
+                <Image 
+                    style={{width: 40,height: 10}} 
+                    source={require('./images/paypal_logo.png')} 
+                />
+                <View>
+                    <Text style={optionsStyles.paymentText}>PayPal</Text>
+                    <Text style={optionsStyles.paymentSubtext}>ex***@ex***.com</Text>
+                </View>
+            </View>
+            <View>
+                <Text style={optionsStyles.subheader}>Automatic Payments</Text>
+            </View>
+            <View style={optionsStyles.lightRow}>
+                <Text style={optionsStyles.text}>Enable Automatic Payments</Text>
+                <View style={{paddingRight:'4%'}}>
+                    <Switch value={isSwitchOn} onValueChange={onToggleSwitch} />
+                </View>
+            </View>
+            <View style={optionsStyles.infoRow}>
+                <Text style={optionsStyles.infoText}>
+                    Automatic Payments make riding the light rail easier
+                    than ever. When enabled, you do not have to tap on or
+                    off. Your phone will automatically tap on and off and
+                    notify you of your status.
+                </Text>
+            </View>
         </View>
     );
 }
@@ -180,7 +226,7 @@ const optionsStyles = StyleSheet.create({
     container: {
 
         display: 'flex',
-        alignItems: 'center',
+        //alignItems: 'center',
         width: '100%',
 
         backgroundColor: '#ececec',
@@ -206,7 +252,7 @@ const optionsStyles = StyleSheet.create({
         fontFamily: 'Roboto_700Bold',
         fontSize: 30,
         textTransform: "uppercase",
-
+        
         shadowOffset:{ width: 0,  height: 4 },
         shadowColor: 'black',
         shadowOpacity: 0.25,
@@ -216,6 +262,17 @@ const optionsStyles = StyleSheet.create({
 
         color: '#ececec',
 
+    },
+
+    subheader: {
+
+        fontFamily: 'Roboto_700Bold',
+        fontSize: 24,
+
+        margin: 17,
+        textTransform: "uppercase",
+        color: '#c34242',
+        
     },
 
     lightRow: {
@@ -248,10 +305,52 @@ const optionsStyles = StyleSheet.create({
 
     },
 
+    infoRow: {
+
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingLeft: 15,
+        
+        height: 100,
+        width: '100%',
+
+        backgroundColor: '#ececec',
+
+    },
+
     text: {
 
         fontFamily: 'Roboto_400Regular',
         fontSize: 24,
+
+    },
+
+    paymentText: {
+
+        fontFamily: 'Roboto_400Regular',
+        fontSize: 21,
+        fontWeight: 'bold',
+        paddingRight: 200,
+
+    },
+
+    paymentSubtext: {
+
+        fontFamily: 'Roboto_400Regular',
+        fontSize: 16,
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        paddingRight: 200,
+
+    },
+
+    infoText: {
+
+        fontFamily: 'Roboto_400Regular',
+        fontSize: 15,
+        color: '#505050',
 
     },
 
@@ -278,7 +377,6 @@ const optionsStyles = StyleSheet.create({
         fontSize: 28,
         fontFamily: 'Roboto_700Bold',
     },
-
 
 
 });
