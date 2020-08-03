@@ -2,6 +2,7 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Button, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import MapView from 'react-native-maps';
+import { Marker } from 'react-native-maps';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -59,23 +60,186 @@ function TravelMain({ navigation }) {
 }
 
 function TravelTimetable() {
+
+    const stops = [
+        {
+            title : "Central Chalmers Street",
+            latlng : {latitude: -33.8842090436081, longitude: 151.20764895037},
+            colour : "#426dc3",        
+        },
+        {
+            title : "Surry Hills",
+            latlng : {latitude: -33.8880728776425, longitude: 151.211901053014},
+            colour: "#c34242"
+        },
+        {
+            title : "Moore Park",
+            latlng : {latitude: -33.8937517650218, longitude: 151.221807102762},
+            colour: "#c34242"
+        },
+
+        {
+            title : "Royal Randwick",
+            latlng : {latitude: -33.9051772334994, longitude: 151.228854533418},
+            colour: "#c34242"
+        },
+
+        {
+            title : "Wansey Road",
+            latlng : {latitude: -33.91052598086, longitude: 151.235224601034},
+            colour: "#c34242"
+        },
+
+        {
+            title : "UNSW High Street",
+            latlng : {latitude: -33.916335208379, longitude: 151.235544924782},
+            colour: "#498c3a"
+        },
+    ]
+
     return (
       <View style={travelStyles.tcontainer}>
         
         <View style={travelStyles.dheader}>
-            <Text style={travelStyles.dheaderTitle}>A to B</Text>
+            <Ionicons style={travelStyles.fStar} name={'ios-star-outline'} size={25}></Ionicons>
+            <Text style={travelStyles.dheaderTitle}>Central Chalmers Street to UNSW High St</Text>
         </View>
 
         <MapView style={travelStyles.mapStyle}
             initialRegion={{
-                latitude: -33.884106,
-                longitude: 151.2081233,
-                latitudeDelta: 0.006,
-                longitudeDelta: 0.006,
+                latitude: -33.8842090436080,
+                longitude: 151.20764895036,
+                latitudeDelta: 0.02,
+                longitudeDelta: 0.02,
             }}
 
             showsUserLocation={true}
-        />
+        >
+
+        {stops.map(marker => (
+            <Marker
+            coordinate={marker.latlng}
+            title={marker.title}
+            >
+                <Ionicons
+                    name={"ios-pin"} 
+                    size={40} 
+                    color={marker.colour}/>
+            </Marker>
+        ))}
+        
+        </MapView>
+
+        <ScrollView style={{width: '100%'}} contentContainerStyle={travelStyles.tripsContainer} showsVerticalScrollIndicator={false}>
+            <View style={travelStyles.lightTrip}>
+                <View>
+                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
+                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                </View>
+                <TouchableOpacity style={travelStyles.tripButton}>
+                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
+                </TouchableOpacity>
+            </View>
+            <View style={travelStyles.darkTrip}>
+                <View>
+                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
+                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                </View>
+                <TouchableOpacity style={travelStyles.tripButton}>
+                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
+                </TouchableOpacity>
+            </View>
+            <View style={travelStyles.lightTrip}>
+                <View>
+                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
+                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                </View>
+                <TouchableOpacity style={travelStyles.tripButton}>
+                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
+                </TouchableOpacity>
+            </View>
+            <View style={travelStyles.darkTrip}>
+                <View>
+                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
+                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                </View>
+                <TouchableOpacity style={travelStyles.tripButton}>
+                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
+                </TouchableOpacity>
+            </View>
+            <View style={travelStyles.lightTrip}>
+                <View>
+                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
+                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                </View>
+                <TouchableOpacity style={travelStyles.tripButton}>
+                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
+                </TouchableOpacity>
+            </View>
+            <View style={travelStyles.darkTrip}>
+                <View>
+                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
+                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                </View>
+                <TouchableOpacity style={travelStyles.tripButton}>
+                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
+                </TouchableOpacity>
+            </View>
+            <View style={travelStyles.lightTrip}>
+                <View>
+                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
+                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                </View>
+                <TouchableOpacity style={travelStyles.tripButton}>
+                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
+                </TouchableOpacity>
+            </View>
+            <View style={travelStyles.darkTrip}>
+                <View>
+                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
+                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                </View>
+                <TouchableOpacity style={travelStyles.tripButton}>
+                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
+                </TouchableOpacity>
+            </View>
+            <View style={travelStyles.lightTrip}>
+                <View>
+                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
+                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                </View>
+                <TouchableOpacity style={travelStyles.tripButton}>
+                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
+                </TouchableOpacity>
+            </View>
+            <View style={travelStyles.darkTrip}>
+                <View>
+                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
+                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                </View>
+                <TouchableOpacity style={travelStyles.tripButton}>
+                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
+                </TouchableOpacity>
+            </View>
+            <View style={travelStyles.lightTrip}>
+                <View>
+                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
+                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                </View>
+                <TouchableOpacity style={travelStyles.tripButton}>
+                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
+                </TouchableOpacity>
+            </View>
+            <View style={travelStyles.darkTrip}>
+                <View>
+                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
+                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                </View>
+                <TouchableOpacity style={travelStyles.tripButton}>
+                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
+                </TouchableOpacity>
+            </View>
+        </ScrollView>
 
       </View>
     );
@@ -161,6 +325,7 @@ const travelStyles = StyleSheet.create({
 
         display: 'flex',
         alignItems: 'center',
+        width: '100%',
 
         backgroundColor: '#ececec',
 
@@ -252,8 +417,9 @@ const travelStyles = StyleSheet.create({
     dheader: {
 
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
+        flexDirection: 'row',
         
         height: 60,
         width: '100%',
@@ -272,12 +438,21 @@ const travelStyles = StyleSheet.create({
     dheaderTitle: {
 
         fontFamily: 'Roboto_700Bold',
-        fontSize: 28,
+        fontSize: 20,
 
+        marginLeft: 'auto',
+        marginRight: 'auto',
 
         color: '#242424',
 
     },
+
+    fStar: {
+
+        marginLeft: 15,
+        marginRight: -25,
+        
+    },  
 
     mapStyle: {
         width: '100%',
@@ -320,7 +495,76 @@ const travelStyles = StyleSheet.create({
         
         backgroundColor: "#ececec",
 
+    },
+
+    tripsContainer: {
+
+        display: 'flex',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
+
+        paddingBottom: 310,
+        width: "100%",
+
+    },
+
+    lightTrip: {
+
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingLeft: 15,
+        
+        height: 60,
+        width: '100%',
+
+        backgroundColor: '#ececec',
+
+    },
+
+    darkTrip: {
+
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingLeft: 15,
+        
+        height: 60,
+        width: '100%',
+
+        backgroundColor: '#d2d2d2',
+
+    },
+
+    timestamp: {
+
+        fontFamily: 'Roboto_400Regular',
+        fontSize: 24,
+
+    },
+
+    duration: {
+
+        fontFamily: 'Roboto_400Regular',
+        color: '#555',
+        fontSize: 16,
+
+    },
+    
+    tripButton: {
+
+        width: 60,
+        height: 60,
+        
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        alignSelf: 'center',
+    
+        backgroundColor: '#c34242',
+
     }
-    
-    
+
 });
