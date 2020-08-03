@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, TextInput } from 'react-native';
 
 // Screen code
 export default class LogInScreen extends React.Component {
@@ -11,61 +11,68 @@ export default class LogInScreen extends React.Component {
 
     render() {
         return (
-            
-            <View style={styles.container}>
-                
-                <Text style={styles.logoText}>
-                    This Page is For Login
-                </Text>
-
+            <View style={styles.container}> 
+                <View style={styles.topbar}> 
+                    <Text style={styles.bigtext}>LOG IN</Text>
+                </View>
+                <View style={styles.container}>     
+                <Text style={styles.prompt}>EMAIL ADDRESS</Text>
+                    {/*} email input */}
+                    <View style={styles.inputView} >      
+                        <TextInput  
+                        style={styles.inputText}
+                        //placeholder="EMAIL ADDRESS" 
+                        //placeholderTextColor="#000000"
+                        onChangeText={text => this.setState({email:text})}
+                        />
+                    </View>
+                    <Text style={styles.prompt}>PASSWORD</Text>
+                    {/*} password input */}
+                        <View style={styles.inputView} > 
+                        <TextInput  
+                            style={styles.inputText}
+                            //placeholder="PASSWORD"
+                            //placeholderTextColor="#003f5c"
+                            onChangeText={text => this.setState({email:text})}
+                            />
+                        </View>
+                    {/*} forgot password - change this to point somewhere better*/}
+                    <TouchableOpacity
+                    onPress={() => this.props.navigation.navigate('Home')}>
+                        <Text style={styles.forgot}>Forgot Password?</Text>
+                    </TouchableOpacity>
+                    {/*} login button - chagne this to point to where its meant to go later*/}
+                    <TouchableOpacity style={styles.loginBtn} 
+                    onPress={() => this.props.navigation.navigate('Home')}>
+                        <Text style={styles.loginText}>LOG IN</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-
         );
     }
 
 }
 
-// function HomeScreen() {
-//     return (
-  
-//       <View style={styles.container}>
-          
-//           {/* Logo Container */}
-//           <View style={styles.logoContainer}>
-//             <Image source={logo} style={styles.logoImageContainer} />
-//             <Text style={styles.logoText}>
-//               LIGHT {"\n"}
-//               RAIL+
-//             </Text>
-//           </View>
-  
-//           {/* Sign Up Button */}
-//           <TouchableOpacity
-//             onPress={() => alert('Hello, world!')}
-//             style={styles.button}>
-//             <Text style={styles.buttonText}>SIGN UP</Text>
-//           </TouchableOpacity>
-  
-//           {/* Log In Button */}
-//           <TouchableOpacity
-//             onPress={() => alert('Hello, world!')}
-//             style={styles.button}>
-//             <Text style={styles.buttonText}>LOG IN</Text>
-//           </TouchableOpacity>
-  
-//           <StatusBar style="light" />
-  
-//       </View>
-  
-//     );
-// }
-
 // Stylesheet
 const styles = StyleSheet.create({
 
+bigtext: {
+    color:"white",
+    fontSize:40,
+    fontWeight: "bold",
+    paddingTop: 20,
+    alignSelf: "center",
+},
+topbar: {
+    //flex: 1,
+    backgroundColor: '#c34242',
+    height:100,
+    width:375,
+},
+
 container: {
     flex: 1,
-    backgroundColor: '#c34242',
+    backgroundColor: '#e5e5e5',
     alignItems: 'center',
     justifyContent: 'center',
 },
@@ -80,18 +87,13 @@ logoContainer: {
 },
 
 button: {
-
     width: 250,
     height: 55,
-
     margin: 10,
-
     borderRadius: 5000,
-
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-
     backgroundColor: '#ececec',
     shadowOffset:{  width: 0,  height: 4,  },
     shadowColor: 'black',
@@ -117,6 +119,51 @@ logoText: {
     shadowOffset:{  width: 0,  height: 4,  },
     shadowColor: 'black',
     shadowOpacity: 0.25,
-}
+},
 
+inputView:{
+    width:300,
+    backgroundColor:"#ECECEC",
+    borderWidth:0.1,
+    borderRadius:25,
+    borderColor:"black",
+    height:50,
+    marginTop:8,
+    marginBottom:20,
+    justifyContent:"center",
+    padding:10
+  },
+
+  inputText: {
+    height:50,
+    color:"black"
+  },
+
+  forgot:{
+    color:"#c34242",
+    fontSize:11
+  },
+
+  prompt:{
+    color:"#c34242",
+    fontSize:25,
+    //alignItems: 'left',
+   // justifyContent: 'left'
+    //marginBottom:30
+  },
+
+  loginBtn:{
+    width:250,
+    height:55,
+    backgroundColor:"#c34242",
+    borderRadius:25,
+    alignItems:"center",
+    justifyContent:"center",
+    marginTop:200,
+    marginBottom:0
+  },
+  loginText: {
+    color:"white",
+    fontSize:30
+  }
 });
