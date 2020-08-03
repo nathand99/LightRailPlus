@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, TouchableOpacity, View, ScrollView, Switch, Image} from 'react-native';
 import { Checkbox } from 'react-native-paper';
 
+import Slider from '@react-native-community/slider'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -84,6 +85,7 @@ function OptionsPayment() {
 
     return (
         <View style={optionsStyles.container}>
+            {/* PAYMENT DETAILS */}
             <View>
                 {/* to change */}
                 <Text style={optionsStyles.subheader}>
@@ -112,6 +114,7 @@ function OptionsPayment() {
                     <Text style={optionsStyles.paymentSubtext}>ex***@ex***.com</Text>
                 </View>
             </View>
+            {/* AUTOMATIC PAYMENTS */}
             <View>
                 <Text style={optionsStyles.subheader}>Automatic Payments</Text>
             </View>
@@ -139,7 +142,7 @@ function OptionsCardType() {
     const [checked2, setChecked2] = React.useState(false);
     const [checked3, setChecked3] = React.useState(false);
     const [checked4, setChecked4] = React.useState(false);
-    
+
 
     return (
         <View style={optionsStyles.container}>
@@ -254,10 +257,58 @@ function OptionsCardType() {
 }
 
 function OptionsDisplay() {
+
+    const [isSwitchOn1, setIsSwitchOn1] = React.useState(false);
+    const onToggleSwitch1 = () => setIsSwitchOn1(!isSwitchOn1);
+    const [isSwitchOn2, setIsSwitchOn2] = React.useState(false);
+    const onToggleSwitch2 = () => setIsSwitchOn2(!isSwitchOn2);
+    const [isSwitchOn3, setIsSwitchOn3] = React.useState(false);
+    const onToggleSwitch3 = () => setIsSwitchOn3(!isSwitchOn3);
+
     return (
-        <View>
-            <Text>Display</Text>
+        <View style={optionsStyles.container}>
+            {/* TEXT OPTIONS */}
+            <View>
+                <Text style={optionsStyles.subheader}>Text Options</Text>
+            </View>
+            <View style={optionsStyles.lightRow}>
+                <Text style={optionsStyles.text}>Bold Text</Text>
+                <View style={{paddingRight:'4%'}}>
+                    <Switch value={isSwitchOn1} onValueChange={onToggleSwitch1} />
+                </View>
+            </View>
+            <View style={optionsStyles.darkRow}>
+                <Text style={optionsStyles.text}>Text Size</Text>
+            </View>
+            <View style={optionsStyles.sliderRow}>
+                <View style={{ paddingLeft:60, paddingRight:60}}>
+                    <Slider 
+                        maximumValue={100}
+                        minimumValue={0}
+                        step={1}
+                        value='initial value'
+                    />
+                </View>
+            </View>
+            {/* DISPLAY OPTIONS */}
+            <View>
+                <Text style={optionsStyles.subheader}>Display Options</Text>
+            </View>
+            <View style={optionsStyles.lightRow}>
+                <Text style={optionsStyles.text}>Increase Contrast</Text>
+                <View style={{paddingRight:'4%'}}>
+                    <Switch value={isSwitchOn2} onValueChange={onToggleSwitch2} />
+                </View>
+            </View>
+            <View style={optionsStyles.darkRow}>
+                <Text style={optionsStyles.text}>Disable Animations</Text>
+                <View style={{paddingRight:'4%'}}>
+                    <Switch value={isSwitchOn3} onValueChange={onToggleSwitch3} />
+                </View>
+            </View>
+
         </View>
+        
     );
 }
 
@@ -430,6 +481,15 @@ const optionsStyles = StyleSheet.create({
         width: '100%',
 
         backgroundColor: '#ececec',
+
+    },
+
+    sliderRow: {
+        
+        height: 50,
+        width: '100%',
+
+        backgroundColor: '#d2d2d2',
 
     },
 
