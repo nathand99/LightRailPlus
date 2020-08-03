@@ -1,6 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, TouchableOpacity, View, ScrollView, Switch, Image} from 'react-native';
+import { Checkbox } from 'react-native-paper';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -133,9 +134,121 @@ function OptionsPayment() {
 }
 
 function OptionsCardType() {
+
+    const [checked1, setChecked1] = React.useState(false);
+    const [checked2, setChecked2] = React.useState(false);
+    const [checked3, setChecked3] = React.useState(false);
+    const [checked4, setChecked4] = React.useState(false);
+    
+
     return (
-        <View>
-            <Text>Change Card Type</Text>
+        <View style={optionsStyles.container}>
+            {/* CURRENT CARD */}
+            <View>
+                <Text style={optionsStyles.subheader}>Current Card</Text>
+            </View>
+            <View style={optionsStyles.lightRow}>
+                <View>
+                    <Image 
+                        style={{width: 40,height: 25}} 
+                        source={require('./images/mastercard_logo.png')} 
+                    />
+                </View>
+                <View>
+                    <Text style={optionsStyles.paymentText}>ADULT FARE</Text>
+                    <Text style={optionsStyles.paymentSubtext}>Since 06/07/2019</Text>
+                </View>
+            </View>
+            {/* CHANGE CARD */}
+            <View>
+                <Text style={optionsStyles.subheader}>Change Card</Text>
+            </View>
+            {/* ADULT FARE */}
+            <View style={optionsStyles.lightRow}>
+                <Checkbox
+                    status={checked1 ? 'checked' : 'unchecked'}
+                    onPress={() => {
+                        setChecked1(!checked1);
+                    }}
+                    color='#c34242'
+                />
+                <View>
+                    <Image 
+                        style={{width: 40,height: 25}} 
+                        source={require('./images/mastercard_logo.png')} 
+                    />
+                </View>
+                <View>
+                    <Text style={optionsStyles.paymentText}>ADULT FARE</Text>
+                </View>
+            </View>
+            {/* CHILD FARE */}
+            <View style={optionsStyles.darkRow}>
+                <Checkbox
+                    status={checked2 ? 'checked' : 'unchecked'}
+                    onPress={() => {
+                        setChecked2(!checked2);
+                    }}
+                    color='#c34242'
+                />
+                <View>
+                    <Image 
+                        style={{width: 40,height: 25}} 
+                        source={require('./images/mastercard_logo.png')} 
+                    />
+                </View>
+                <View>
+                    <Text style={optionsStyles.paymentText}>CHILD FARE</Text>
+                </View>
+            </View>
+            {/* SENIOR FARE */}
+            <View style={optionsStyles.lightRow}>
+                <Checkbox
+                    status={checked3 ? 'checked' : 'unchecked'}
+                    onPress={() => {
+                        setChecked3(!checked3);
+                    }}
+                    color='#c34242'
+                />
+                <View>
+                    <Image 
+                        style={{width: 40,height: 25}} 
+                        source={require('./images/mastercard_logo.png')} 
+                    />
+                </View>
+                <View>
+                    <Text style={optionsStyles.paymentText}>SENIOR FARE</Text>
+                </View>
+            </View>
+            {/* CONCESSION */}
+            <View style={optionsStyles.darkRow}>
+                <Checkbox
+                    status={checked4 ? 'checked' : 'unchecked'}
+                    onPress={() => {
+                        setChecked4(!checked4);
+                    }}
+                    color='#c34242'
+                />
+                <View>
+                    <Image 
+                        style={{width: 40,height: 25}} 
+                        source={require('./images/mastercard_logo.png')} 
+                    />
+                </View>
+                <View>
+                    <Text style={optionsStyles.paymentText}>CONCESSION</Text>
+                </View>
+            </View>
+            {/* INFO */}
+            <View style={optionsStyles.infoRow}>
+                <Text style={optionsStyles.infoText}>
+                    Some selection may require verification of eligibility
+                    via phone call. Please co-operate with our customer
+                    service agents if you wish to change your card type to
+                    one of these selections.
+                </Text>
+            </View>
+
         </View>
     );
 }
@@ -332,6 +445,7 @@ const optionsStyles = StyleSheet.create({
         fontFamily: 'Roboto_400Regular',
         fontSize: 21,
         fontWeight: 'bold',
+        paddingLeft: 20,
         paddingRight: 200,
 
     },
@@ -342,6 +456,7 @@ const optionsStyles = StyleSheet.create({
         fontSize: 16,
         flexDirection: 'row',
         justifyContent: 'flex-end',
+        paddingLeft: 20,
         paddingRight: 200,
 
     },
