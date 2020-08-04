@@ -1,22 +1,35 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View, TextInput } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, TextInput, KeyboardAvoidingView } from 'react-native';
 
 // Screen code
-export default class LogInScreen extends React.Component {
+export default class SignUpScreen extends React.Component {
 
     static navigationOptions = {
-        title: 'LogIn',
+        title: 'SignUp',
     };
 
     render() {
         return (
             <View style={styles.container}> 
                 <View style={styles.topbar}> 
-                    <Text style={styles.bigtext}>LOG IN</Text>
+                    <Text style={styles.bigtext}>REGISTER</Text>
                 </View>
-                <View style={styles.container}>     
-                <Text style={styles.prompt}>EMAIL ADDRESS</Text>
+                <Text style={styles.prompt}>PERSONAL DETAILS</Text>
+                <KeyboardAvoidingView style={styles.inputcontainer}
+                behavior= "0" enabled="False"
+                >  
+                    <Text style={styles.prompt}>NAME</Text>
+                    {/*} name input */}
+                    <View style={styles.inputView} >      
+                        <TextInput  
+                        style={styles.inputText}
+                        //placeholder="EMAIL ADDRESS" 
+                        //placeholderTextColor="#000000"
+                        //onChangeText={text => this.setState({email:text})}
+                        />
+                    </View>   
+                    <Text style={styles.prompt}>EMAIL ADDRESS</Text>
                     {/*} email input */}
                     <View style={styles.inputView} >      
                         <TextInput  
@@ -37,17 +50,12 @@ export default class LogInScreen extends React.Component {
                             onChangeText={text => this.setState({email:text})}
                             />
                         </View>
-                    {/*} forgot password - change this to point somewhere better*/}
-                    <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate('Home')}>
-                        <Text style={styles.forgot}>Forgot Password?</Text>
-                    </TouchableOpacity>
                     {/*} login button - chagne this to point to where its meant to go later*/}
                     <TouchableOpacity style={styles.loginBtn} 
-                    onPress={() => this.props.navigation.navigate('Main')}>
-                        <Text style={styles.loginText}>LOG IN</Text>
+                    onPress={() => this.props.navigation.navigate('Home')}>
+                        <Text style={styles.loginText}>NEXT</Text>
                     </TouchableOpacity>
-                </View>
+                </KeyboardAvoidingView>
             </View>
         );
     }
@@ -76,6 +84,14 @@ container: {
     backgroundColor: '#e5e5e5',
     alignItems: 'center',
     justifyContent: 'center',
+},
+
+inputcontainer: {
+    flex: 1,
+    backgroundColor: '#e5e5e5',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 20,
 },
 
 logoContainer: {
@@ -160,7 +176,7 @@ inputView:{
     borderRadius:25,
     alignItems:"center",
     justifyContent:"center",
-    marginTop:200,
+    marginTop:150,
     marginBottom:0
   },
   loginText: {
