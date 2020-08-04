@@ -10,6 +10,8 @@ import HomeScreen from './screens/homescreen.js';
 import LogInScreen from './screens/login.js';
 import SignUpScreen from './screens/signup.js';
 import MainScreen from './screens/main.js';
+import PaymentDetailsScreen from './screens/paymentdetails.js';
+import CardTypeScreen from './screens/cardtype.js';
 
 
 
@@ -47,13 +49,15 @@ export default function App() {
     <NavigationContainer>
       
       <Stack.Navigator 
-        initialRouteName="SignUp"
+        initialRouteName="Home"
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="LogIn" component={LogInScreen} />
         <Stack.Screen name="Main" component={MainScreen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
+        <Stack.Screen name="PaymentDetails" component={PaymentDetailsScreen} />
+        <Stack.Screen name="CardType" component={CardTypeScreen} />
       </Stack.Navigator>
 
     </NavigationContainer>

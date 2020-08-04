@@ -14,26 +14,40 @@ export default class SignUpScreen extends React.Component {
             <View style={styles.container}> 
                 <View style={styles.topbar}> 
                     <TouchableOpacity style={styles.back} 
-                        onPress={() => this.props.navigation.navigate('Home')}>
+                        onPress={() => this.props.navigation.navigate('SignUp')}>
                         <Text style={styles.loginText}>←</Text>
                     </TouchableOpacity>
                     <Text style={styles.bigtext}>REGISTER</Text>
                 </View>
-                <Text style={styles.prompt}>PERSONAL DETAILS</Text>
+                <Text style={styles.prompt}>PAYMENT DETAILS</Text>
                 <KeyboardAvoidingView style={styles.inputcontainer}
                 behavior= "0" enabled="False"
                 >  
-                    <Text style={styles.prompt}>NAME</Text>
+                    <Text style={styles.prompt}>CARD NAME</Text>
                     {/*} name input */}
                     <View style={styles.inputView} >      
                         <TextInput  
                         style={styles.inputText}
-                        //placeholder="EMAIL ADDRESS" 
-                        //placeholderTextColor="#000000"
                         //onChangeText={text => this.setState({email:text})}
                         />
                     </View>   
-                    <Text style={styles.prompt}>EMAIL ADDRESS</Text>
+                    <Text style={styles.prompt}>CARD NUMBER</Text>
+                    {/*} email input */}
+                    <View style={styles.inputView} >      
+                        <TextInput  
+                        style={styles.inputText}
+                        onChangeText={text => this.setState({email:text})}
+                        />
+                    </View>
+                    <Text style={styles.prompt}>EXPIRY DATE</Text>
+                    {/*} password input */}
+                    <View style={styles.inputView} > 
+                    <TextInput  
+                        style={styles.inputText}
+                        onChangeText={text => this.setState({email:text})}
+                        />
+                    </View>
+                    <Text style={styles.prompt}>CVV</Text>
                     {/*} email input */}
                     <View style={styles.inputView} >      
                         <TextInput  
@@ -43,20 +57,9 @@ export default class SignUpScreen extends React.Component {
                         onChangeText={text => this.setState({email:text})}
                         />
                     </View>
-                    <Text style={styles.prompt}>PASSWORD</Text>
-                    {/*} password input */}
-                        <View style={styles.inputView} > 
-                        <TextInput  
-                            style={styles.inputText}
-                            secureTextEntry={true}
-                            //placeholder="PASSWORD"
-                            //placeholderTextColor="#003f5c"
-                            onChangeText={text => this.setState({email:text})}
-                            />
-                        </View>
                     {/*} login button - chagne this to point to where its meant to go later*/}
                     <TouchableOpacity style={styles.loginBtn} 
-                    onPress={() => this.props.navigation.navigate('PaymentDetails')}>
+                    onPress={() => this.props.navigation.navigate('CardType')}>
                         <Text style={styles.loginText}>NEXT</Text>
                     </TouchableOpacity>
                 </KeyboardAvoidingView>
@@ -105,7 +108,7 @@ inputcontainer: {
     backgroundColor: '#e5e5e5',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: 20,
+    paddingTop: 0,
 },
 
 logoContainer: {
@@ -162,7 +165,8 @@ inputView:{
     marginTop:8,
     marginBottom:20,
     justifyContent:"center",
-    padding:10
+    padding:10,
+    //paddingTop:30,
   },
 
   inputText: {
@@ -190,7 +194,7 @@ inputView:{
     borderRadius:25,
     alignItems:"center",
     justifyContent:"center",
-    marginTop:150,
+    marginTop:40,
     marginBottom:0
   },
   loginText: {

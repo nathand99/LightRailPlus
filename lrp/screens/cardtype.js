@@ -1,65 +1,43 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View, TextInput, KeyboardAvoidingView } from 'react-native';
+import { CheckBox } from "native-base"
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 // Screen code
 export default class SignUpScreen extends React.Component {
 
     static navigationOptions = {
-        title: 'SignUp',
+        title: 'CardType',
     };
+    state={
+        selected:0
+    }
 
     render() {
         return (
             <View style={styles.container}> 
                 <View style={styles.topbar}> 
                     <TouchableOpacity style={styles.back} 
-                        onPress={() => this.props.navigation.navigate('Home')}>
+                        onPress={() => this.props.navigation.navigate('SignUp')}>
                         <Text style={styles.loginText}>←</Text>
                     </TouchableOpacity>
                     <Text style={styles.bigtext}>REGISTER</Text>
                 </View>
-                <Text style={styles.prompt}>PERSONAL DETAILS</Text>
-                <KeyboardAvoidingView style={styles.inputcontainer}
-                behavior= "0" enabled="False"
-                >  
-                    <Text style={styles.prompt}>NAME</Text>
-                    {/*} name input */}
-                    <View style={styles.inputView} >      
-                        <TextInput  
-                        style={styles.inputText}
-                        //placeholder="EMAIL ADDRESS" 
-                        //placeholderTextColor="#000000"
-                        //onChangeText={text => this.setState({email:text})}
-                        />
-                    </View>   
-                    <Text style={styles.prompt}>EMAIL ADDRESS</Text>
-                    {/*} email input */}
-                    <View style={styles.inputView} >      
-                        <TextInput  
-                        style={styles.inputText}
-                        //placeholder="EMAIL ADDRESS" 
-                        //placeholderTextColor="#000000"
-                        onChangeText={text => this.setState({email:text})}
-                        />
-                    </View>
-                    <Text style={styles.prompt}>PASSWORD</Text>
-                    {/*} password input */}
-                        <View style={styles.inputView} > 
-                        <TextInput  
-                            style={styles.inputText}
-                            secureTextEntry={true}
-                            //placeholder="PASSWORD"
-                            //placeholderTextColor="#003f5c"
-                            onChangeText={text => this.setState({email:text})}
-                            />
-                        </View>
-                    {/*} login button - chagne this to point to where its meant to go later*/}
-                    <TouchableOpacity style={styles.loginBtn} 
-                    onPress={() => this.props.navigation.navigate('PaymentDetails')}>
-                        <Text style={styles.loginText}>NEXT</Text>
-                    </TouchableOpacity>
-                </KeyboardAvoidingView>
+                <Text style={styles.prompt}>CARD TYPE</Text>
+                <View style={styles.item} >
+                    <CheckBox checked={this.state.selectedLang===1} color="#fc5185" onPress={()=>this.setState({selectedLang:1})}/>
+                    <Text style={
+                    {...styles.checkBoxTxt,
+                        color:this.state.selectedLang===1?"#fc5185":"gray",
+                        fontWeight:this.state.selectedLang===1? "bold" :"normal"
+                    }}
+                    >Python</Text>
+                </View>
+                {/*} login button - chagne this to point to where its meant to go later*/}
+                <TouchableOpacity style={styles.loginBtn} 
+                onPress={() => this.props.navigation.navigate('Home')}>
+                    <Text style={styles.loginText}>REGISTER</Text>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -105,7 +83,7 @@ inputcontainer: {
     backgroundColor: '#e5e5e5',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: 20,
+    paddingTop: 0,
 },
 
 logoContainer: {
@@ -162,7 +140,8 @@ inputView:{
     marginTop:8,
     marginBottom:20,
     justifyContent:"center",
-    padding:10
+    padding:10,
+    //paddingTop:30,
   },
 
   inputText: {
@@ -190,7 +169,7 @@ inputView:{
     borderRadius:25,
     alignItems:"center",
     justifyContent:"center",
-    marginTop:150,
+    marginTop:40,
     marginBottom:0
   },
   loginText: {

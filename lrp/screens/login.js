@@ -13,14 +13,17 @@ export default class LogInScreen extends React.Component {
         return (
             <View style={styles.container}> 
                 <View style={styles.topbar}> 
+                    <TouchableOpacity style={styles.back} 
+                    onPress={() => this.props.navigation.navigate('Home')}>
+                        <Text style={styles.loginText}>←</Text>
+                    </TouchableOpacity>
                     <Text style={styles.bigtext}>LOG IN</Text>
                 </View>
                 <View style={styles.container}>     
-                <Text style={styles.prompt}>EMAIL ADDRESS</Text>
+                    <Text style={styles.prompt}>EMAIL ADDRESS</Text>
                     {/*} email input */}
-                    <View style={styles.inputView} >      
-                        <TextInput  
-                        style={styles.inputText}
+                    <View style={styles.inputView}>      
+                        <TextInput style={styles.inputText}
                         //placeholder="EMAIL ADDRESS" 
                         //placeholderTextColor="#000000"
                         onChangeText={text => this.setState({email:text})}
@@ -29,8 +32,7 @@ export default class LogInScreen extends React.Component {
                     <Text style={styles.prompt}>PASSWORD</Text>
                     {/*} password input */}
                         <View style={styles.inputView} > 
-                        <TextInput  
-                            style={styles.inputText}
+                        <TextInput style={styles.inputText}
                             secureTextEntry={true}
                             //placeholder="PASSWORD"
                             //placeholderTextColor="#003f5c"
@@ -57,15 +59,24 @@ export default class LogInScreen extends React.Component {
 // Stylesheet
 const styles = StyleSheet.create({
 
+back: {
+    color:"white",
+    fontSize:40,
+    fontWeight: "bold",
+    paddingTop: 40,
+    paddingLeft: 20,
+},
 bigtext: {
     color:"white",
     fontSize:40,
     fontWeight: "bold",
     paddingTop: 20,
-    alignSelf: "center",
+    paddingLeft: 70,
+    textAlign: "center",
+    textAlignVertical: "center",
 },
 topbar: {
-    //flex: 1,
+    flexDirection: 'row',
     backgroundColor: '#c34242',
     height:100,
     width:"100%",
@@ -107,22 +118,8 @@ buttonText: {
     fontFamily: 'Roboto_700Bold',
 },
 
-logoImageContainer: {
-    width: 150,
-    height: 150,
-},
-
-logoText: {
-    fontSize: 48,
-    color: '#ececec',
-    fontFamily: 'Roboto_700Bold',
-
-    shadowOffset:{  width: 0,  height: 4,  },
-    shadowColor: 'black',
-    shadowOpacity: 0.25,
-},
-
 inputView:{
+    display: "flex",
     width:300,
     backgroundColor:"#ECECEC",
     borderWidth:0.1,
@@ -132,11 +129,11 @@ inputView:{
     marginTop:8,
     marginBottom:20,
     justifyContent:"center",
-    padding:10
+    padding:10,
   },
 
   inputText: {
-    height:50,
+    height:"100%",
     color:"black"
   },
 
