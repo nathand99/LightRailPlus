@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View, ScrollView, TextInput } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, ScrollView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -28,9 +28,9 @@ const Stack = createStackNavigator();
 
 function OptionsMain({ navigation }) {
   return (
-    <ScrollView contentContainerStyle={styles.container} /*showsVerticalScrollIndicator={false}*/>
-      {/* RECENT PAYMENTS */}
+    <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
       <View style={historyStyles.historyContainer}>
+      {/* RECENT PAYMENTS */}
         <Text style={historyStyles.header}>RECENT PAYMENTS</Text>
         <View style={tripStyles.tripContainer}>
           <Text style={tripStyles.tripRoute}>UNSW High Street to Central Chalmers Street 15 July 2020</Text>
@@ -56,15 +56,11 @@ function OptionsMain({ navigation }) {
           <Text style={tripStyles.tripRoute}>UNSW High Street to Central Chalmers Street 10 July 2020</Text>
           <Text style={tripStyles.tripPrice}>-$2.99</Text>
         </View>
-        <View style={tripStyles.tripContainer}>
-          <Text style={tripStyles.tripRoute}>UNSW High Street to Central Chalmers Street 9 July 2020</Text>
-          <Text style={tripStyles.tripPrice}>-$2.99</Text>
-        </View>
-        <View style={tripStyles.tripContainer}>
-          <Text style={tripStyles.tripRoute}>UNSW High Street to Central Chalmers Street 8 July 2020</Text>
-          <Text style={tripStyles.tripPrice}>-$2.99</Text>
-        </View>
       </View>
+
+      <TouchableOpacity>
+        <Text style={styles.button}>SEE ALL</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 }
@@ -154,7 +150,7 @@ export default class PayScreen extends React.Component {
 // Stylesheet
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
+		flexGrow: 1,
 		backgroundColor: '#ececec',
 		// alignItems: 'flex-start',
 		justifyContent: 'flex-start',
@@ -164,7 +160,15 @@ const styles = StyleSheet.create({
 	body: {
 		padding: 20,
 		textAlign: 'center',
-	},
+  },
+  
+  button: {
+    fontFamily: 'Roboto_400Regular',
+    color: '#c34242',
+    fontSize: 24,
+    alignSelf: 'flex-end',
+    fontWeight: 'bold'
+  }
   
 });
 
@@ -172,7 +176,7 @@ const historyStyles = StyleSheet.create({
   historyContainer: {
     flex: 1,
     flexDirection: 'column',
-		backgroundColor: '#FF9AA2',
+		// backgroundColor: '#FF9AA2',
 		// alignItems: 'flex-start',
 		// justifyContent: 'flex-start',
 		// padding: 80,
@@ -186,7 +190,7 @@ const historyStyles = StyleSheet.create({
 		fontSize: 26,
 		color: '#c34242',
     fontFamily: 'Roboto_700Bold',
-    backgroundColor: '#FFB7B2',
+    // backgroundColor: '#FFB7B2',
 	},
 });
 
@@ -194,13 +198,13 @@ const tripStyles = StyleSheet.create({
   tripContainer: {
     // flex: 1,
     flexDirection: 'row',
-		backgroundColor: 'yellow',
+		// backgroundColor: 'yellow',
   },
 
   tripRoute: {
     flex: 7,
     // flexDirection: 'row',
-    backgroundColor: '#FFDAC1',
+    // backgroundColor: '#FFDAC1',
     fontFamily: 'Roboto_400Regular',
     fontSize: 18,
     fontWeight: 'normal',
@@ -212,7 +216,7 @@ const tripStyles = StyleSheet.create({
   tripDate: {
     // flex: 1,
     // flexDirection: 'row',
-    backgroundColor: '#abcdef',
+    // backgroundColor: '#abcdef',
     fontFamily: 'Roboto_400Regular',
     fontSize: 15,
     fontWeight: 'normal',
@@ -225,7 +229,7 @@ const tripStyles = StyleSheet.create({
     flex: 3,
     display: 'flex',
     // flexDirection: 'row',
-    backgroundColor: '#E2F0CB',
+    // backgroundColor: '#E2F0CB',
     fontFamily: 'Roboto',
     fontSize: 24,
     fontWeight: 'bold',
