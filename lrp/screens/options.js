@@ -68,7 +68,7 @@ function OptionsMain({ navigation }) {
 
             {/* LOG OUT BUTTON */}
             <TouchableOpacity
-                /*onPress={() => navigation.navigate('Home')}*/
+                //onPress={() => this.props.navigation.navigate('Home')}>
                 style={optionsStyles.button}>
                 <Text style={optionsStyles.buttonText}>LOG OUT</Text>
             </TouchableOpacity>
@@ -100,15 +100,17 @@ function OptionsPayment() {
                     />
                 </View>
                 <View>
-                    <Text style={optionsStyles.paymentText}>MasterCard</Text>
+                    <Text style={optionsStyles.paymentText}>MasterCard   </Text>
                     <Text style={optionsStyles.paymentSubtext}>**** 1234</Text>
                 </View>
             </View>
             <View style={optionsStyles.darkRow}>
-                <Image 
-                    style={{width: 40,height: 10}} 
-                    source={require('./images/paypal_logo.png')} 
-                />
+                <View>
+                    <Image 
+                        style={{width: 40,height: 10}} 
+                        source={require('./images/paypal_logo.png')} 
+                    />
+                </View>
                 <View>
                     <Text style={optionsStyles.paymentText}>PayPal</Text>
                     <Text style={optionsStyles.paymentSubtext}>ex***@ex***.com</Text>
@@ -138,7 +140,7 @@ function OptionsPayment() {
 
 function OptionsCardType() {
 
-    const [checked1, setChecked1] = React.useState(false);
+    const [checked1, setChecked1] = React.useState(true);
     const [checked2, setChecked2] = React.useState(false);
     const [checked3, setChecked3] = React.useState(false);
     const [checked4, setChecked4] = React.useState(false);
@@ -154,7 +156,7 @@ function OptionsCardType() {
                 <View>
                     <Image 
                         style={{width: 40,height: 25}} 
-                        source={require('./images/mastercard_logo.png')} 
+                        source={require('./images/adult_opal.png')} 
                     />
                 </View>
                 <View>
@@ -178,7 +180,7 @@ function OptionsCardType() {
                 <View>
                     <Image 
                         style={{width: 40,height: 25}} 
-                        source={require('./images/mastercard_logo.png')} 
+                        source={require('./images/adult_opal.png')} 
                     />
                 </View>
                 <View>
@@ -197,7 +199,7 @@ function OptionsCardType() {
                 <View>
                     <Image 
                         style={{width: 40,height: 25}} 
-                        source={require('./images/mastercard_logo.png')} 
+                        source={require('./images/child_opal.png')} 
                     />
                 </View>
                 <View>
@@ -216,7 +218,7 @@ function OptionsCardType() {
                 <View>
                     <Image 
                         style={{width: 40,height: 25}} 
-                        source={require('./images/mastercard_logo.png')} 
+                        source={require('./images/senior_opal.png')} 
                     />
                 </View>
                 <View>
@@ -235,7 +237,7 @@ function OptionsCardType() {
                 <View>
                     <Image 
                         style={{width: 40,height: 25}} 
-                        source={require('./images/mastercard_logo.png')} 
+                        source={require('./images/concession_opal.png')} 
                     />
                 </View>
                 <View>
@@ -281,12 +283,13 @@ function OptionsDisplay() {
                 <Text style={optionsStyles.text}>Text Size</Text>
             </View>
             <View style={optionsStyles.sliderRow}>
-                <View style={{ paddingLeft:60, paddingRight:60}}>
+                <View style={{ paddingLeft:30, paddingRight:30}}>
                     <Slider 
                         maximumValue={100}
                         minimumValue={0}
-                        step={1}
-                        value='initial value'
+                        step={20}
+                        minimumTrackTintColor="#c34242"
+                        value={20}
                     />
                 </View>
             </View>
@@ -505,8 +508,8 @@ const optionsStyles = StyleSheet.create({
         fontFamily: 'Roboto_400Regular',
         fontSize: 21,
         fontWeight: 'bold',
-        paddingLeft: 20,
         paddingRight: 200,
+        paddingLeft: 15,
 
     },
 
@@ -516,8 +519,8 @@ const optionsStyles = StyleSheet.create({
         fontSize: 16,
         flexDirection: 'row',
         justifyContent: 'flex-end',
-        paddingLeft: 20,
         paddingRight: 200,
+        paddingLeft: 15,
 
     },
 
