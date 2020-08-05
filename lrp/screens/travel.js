@@ -129,81 +129,83 @@ function TravelTimetable({navigation}) {
         ))}
         
         </MapView>
-
-        <ScrollView style={{width: '100%'}} contentContainerStyle={travelStyles.tripsContainer} showsVerticalScrollIndicator={false}>
-            <View style={travelStyles.lightTrip}>
-                <View>
-                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
-                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+        
+        <View style={travelStyles.tripsScrollContainer}>
+            <ScrollView style={{width: '100%'}} contentContainerStyle={travelStyles.tripsContainer} showsVerticalScrollIndicator={false}>
+                <View style={travelStyles.lightTrip}>
+                    <View>
+                        <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
+                        <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                    </View>
+                    <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
+                        <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
+                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
-                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
-                </TouchableOpacity>
-            </View>
-            <View style={travelStyles.darkTrip}>
-                <View>
-                    <Text style={travelStyles.timestamp}>08:15 - 08:35</Text>
-                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                <View style={travelStyles.darkTrip}>
+                    <View>
+                        <Text style={travelStyles.timestamp}>08:15 - 08:35</Text>
+                        <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                    </View>
+                    <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
+                        <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
+                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
-                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
-                </TouchableOpacity>
-            </View>
-            <View style={travelStyles.lightTrip}>
-                <View>
-                    <Text style={travelStyles.timestamp}>08:25 - 08:45</Text>
-                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                <View style={travelStyles.lightTrip}>
+                    <View>
+                        <Text style={travelStyles.timestamp}>08:25 - 08:45</Text>
+                        <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                    </View>
+                    <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
+                        <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
+                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
-                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
-                </TouchableOpacity>
-            </View>
-            <View style={travelStyles.darkTrip}>
-                <View>
-                    <Text style={travelStyles.timestamp}>08:35 - 08:55</Text>
-                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                <View style={travelStyles.darkTrip}>
+                    <View>
+                        <Text style={travelStyles.timestamp}>08:35 - 08:55</Text>
+                        <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                    </View>
+                    <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
+                        <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
+                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
-                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
-                </TouchableOpacity>
-            </View>
-            <View style={travelStyles.lightTrip}>
-                <View>
-                    <Text style={travelStyles.timestamp}>08:45 - 08:55</Text>
-                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                <View style={travelStyles.lightTrip}>
+                    <View>
+                        <Text style={travelStyles.timestamp}>08:45 - 08:55</Text>
+                        <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                    </View>
+                    <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
+                        <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
+                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
-                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
-                </TouchableOpacity>
-            </View>
-            <View style={travelStyles.darkTrip}>
-                <View>
-                    <Text style={travelStyles.timestamp}>08:55 - 09:05</Text>
-                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                <View style={travelStyles.darkTrip}>
+                    <View>
+                        <Text style={travelStyles.timestamp}>08:55 - 09:05</Text>
+                        <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                    </View>
+                    <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
+                        <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
+                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
-                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
-                </TouchableOpacity>
-            </View>
-            <View style={travelStyles.lightTrip}>
-                <View>
-                    <Text style={travelStyles.timestamp}>09:05 - 09:25</Text>
-                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                <View style={travelStyles.lightTrip}>
+                    <View>
+                        <Text style={travelStyles.timestamp}>09:05 - 09:25</Text>
+                        <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                    </View>
+                    <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
+                        <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
+                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
-                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
-                </TouchableOpacity>
-            </View>
-            <View style={travelStyles.darkTrip}>
-                <View>
-                    <Text style={travelStyles.timestamp}>09:15 - 09:35</Text>
-                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                <View style={travelStyles.darkTrip}>
+                    <View>
+                        <Text style={travelStyles.timestamp}>09:15 - 09:35</Text>
+                        <Text style={travelStyles.duration}>20 mins · $3.37</Text>
+                    </View>
+                    <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
+                        <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
+                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
-                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
-                </TouchableOpacity>
-            </View>
-        </ScrollView>
+            </ScrollView>
+        </View>
 
       </View>
     );
@@ -304,30 +306,38 @@ function TravelJourney() {
         </ScrollView>
         
         <View style={travelStyles.currstopcontainer}>
-            <Text>Current Stop</Text>
-            <Text>Wansey Road</Text>
+            <Text style={travelStyles.currStopTitle}>Current Stop</Text>
+            <Text style={travelStyles.currStopName}>Wansey Road</Text>
         </View>
-
+        
+        <View style={travelStyles.stopsScrollContainer}>
         <ScrollView style={{width: '100%'}} contentContainerStyle={travelStyles.tripsContainer} showsVerticalScrollIndicator={false}>
-            <View style={travelStyles.lightTrip}>
-                <View>
-                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
-                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
-                </View>
-                <TouchableOpacity style={travelStyles.tripButton}>
-                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
-                </TouchableOpacity>
+            <View style={travelStyles.lightStop}>
+                <Text style={travelStyles.stoptime}>Central Chalmers Street</Text>
+                <Text style={travelStyles.stoptime}>8:05</Text>
             </View>
-            <View style={travelStyles.darkTrip}>
-                <View>
-                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
-                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
-                </View>
-                <TouchableOpacity style={travelStyles.tripButton}>
-                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
-                </TouchableOpacity>
+            <View style={travelStyles.darkStop}>
+                <Text style={travelStyles.stoptime}>Surry Hills</Text>
+                <Text style={travelStyles.stoptime}>8:08</Text>
+            </View>
+            <View style={travelStyles.lightStop}>
+                <Text style={travelStyles.stoptime}>Moore Park</Text>
+                <Text style={travelStyles.stoptime}>8:05</Text>
+            </View>
+            <View style={travelStyles.darkStop}>
+                <Text style={travelStyles.stoptime}>Royal Randwick</Text>
+                <Text style={travelStyles.stoptime}>8:08</Text>
+            </View>
+            <View style={travelStyles.lightStop}>
+                <Text style={travelStyles.stoptime}>Wansey Road</Text>
+                <Text style={travelStyles.stoptime}>8:05</Text>
+            </View>
+            <View style={travelStyles.darkStop}>
+                <Text style={travelStyles.stoptime}>UNSW High Street</Text>
+                <Text style={travelStyles.stoptime}>8:08</Text>
             </View>
         </ScrollView>
+        </View>
 
       </View>
     );
@@ -587,13 +597,24 @@ const travelStyles = StyleSheet.create({
 
     },
 
+    tripsScrollContainer: {
+        height: 280,
+        width: '100%',
+        marginBottom: 150,
+    },
+
+    stopsScrollContainer: {
+        height: 200,
+        width: '100%',
+        marginBottom: 150,
+    },
+
     tripsContainer: {
 
         display: 'flex',
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
 
-        paddingBottom: 310,
         width: "100%",
 
     },
@@ -640,6 +661,13 @@ const travelStyles = StyleSheet.create({
         fontFamily: 'Roboto_400Regular',
         color: '#555',
         fontSize: 16,
+
+    },
+
+    stoptime: {
+
+        fontFamily: 'Roboto_500Medium',
+        fontSize: 24,
 
     },
     
@@ -740,5 +768,54 @@ const travelStyles = StyleSheet.create({
         elevation: 1,
         zIndex: 1,
     },
+
+    currStopTitle: {
+        
+        fontFamily: 'Roboto_400Regular',
+        fontSize: 20,
+        color: '#ececec',
+
+    },
+
+    currStopName: {
+
+        fontFamily: 'Roboto_700Bold',
+        fontSize: 24,
+        color: '#ececec',
+
+    },
+
+    lightStop: {
+
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+
+        paddingHorizontal: 15,
+        
+        height: 60,
+        width: '100%',
+
+        backgroundColor: '#ececec',
+
+    },
+
+    darkStop: {
+
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+
+        paddingHorizontal: 15,
+        
+        height: 60,
+        width: '100%',
+
+        backgroundColor: '#d2d2d2',
+
+    },
+
 
 });
