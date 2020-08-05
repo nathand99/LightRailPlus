@@ -59,7 +59,7 @@ function TravelMain({ navigation }) {
     );
 }
 
-function TravelTimetable() {
+function TravelTimetable({navigation}) {
 
     const stops = [
         {
@@ -136,91 +136,179 @@ function TravelTimetable() {
                     <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
                     <Text style={travelStyles.duration}>20 mins · $3.37</Text>
                 </View>
-                <TouchableOpacity style={travelStyles.tripButton}>
+                <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
                     <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
                 </TouchableOpacity>
             </View>
             <View style={travelStyles.darkTrip}>
                 <View>
-                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
+                    <Text style={travelStyles.timestamp}>08:15 - 08:35</Text>
                     <Text style={travelStyles.duration}>20 mins · $3.37</Text>
                 </View>
-                <TouchableOpacity style={travelStyles.tripButton}>
+                <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
                     <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
                 </TouchableOpacity>
             </View>
             <View style={travelStyles.lightTrip}>
                 <View>
-                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
+                    <Text style={travelStyles.timestamp}>08:25 - 08:45</Text>
                     <Text style={travelStyles.duration}>20 mins · $3.37</Text>
                 </View>
-                <TouchableOpacity style={travelStyles.tripButton}>
+                <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
                     <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
                 </TouchableOpacity>
             </View>
             <View style={travelStyles.darkTrip}>
                 <View>
-                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
+                    <Text style={travelStyles.timestamp}>08:35 - 08:55</Text>
                     <Text style={travelStyles.duration}>20 mins · $3.37</Text>
                 </View>
-                <TouchableOpacity style={travelStyles.tripButton}>
+                <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
                     <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
                 </TouchableOpacity>
             </View>
             <View style={travelStyles.lightTrip}>
                 <View>
-                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
+                    <Text style={travelStyles.timestamp}>08:45 - 08:55</Text>
                     <Text style={travelStyles.duration}>20 mins · $3.37</Text>
                 </View>
-                <TouchableOpacity style={travelStyles.tripButton}>
+                <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
                     <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
                 </TouchableOpacity>
             </View>
             <View style={travelStyles.darkTrip}>
                 <View>
-                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
+                    <Text style={travelStyles.timestamp}>08:55 - 09:05</Text>
                     <Text style={travelStyles.duration}>20 mins · $3.37</Text>
                 </View>
-                <TouchableOpacity style={travelStyles.tripButton}>
+                <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
                     <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
                 </TouchableOpacity>
             </View>
             <View style={travelStyles.lightTrip}>
                 <View>
-                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
+                    <Text style={travelStyles.timestamp}>09:05 - 09:25</Text>
                     <Text style={travelStyles.duration}>20 mins · $3.37</Text>
                 </View>
-                <TouchableOpacity style={travelStyles.tripButton}>
+                <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
                     <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
                 </TouchableOpacity>
             </View>
             <View style={travelStyles.darkTrip}>
                 <View>
-                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
+                    <Text style={travelStyles.timestamp}>09:15 - 09:35</Text>
                     <Text style={travelStyles.duration}>20 mins · $3.37</Text>
                 </View>
-                <TouchableOpacity style={travelStyles.tripButton}>
+                <TouchableOpacity style={travelStyles.tripButton} onPress={() => navigation.navigate('Trip')}>
                     <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
                 </TouchableOpacity>
             </View>
-            <View style={travelStyles.lightTrip}>
-                <View>
-                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
-                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
-                </View>
-                <TouchableOpacity style={travelStyles.tripButton}>
-                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
-                </TouchableOpacity>
+        </ScrollView>
+
+      </View>
+    );
+}
+
+function TravelJourney() {
+
+    const stops = [
+        {
+            title : "Central Chalmers Street",
+            latlng : {latitude: -33.8842090436081, longitude: 151.20764895037},
+            colour : "#426dc3",        
+        },
+        {
+            title : "Surry Hills",
+            latlng : {latitude: -33.8880728776425, longitude: 151.211901053014},
+            colour: "#c34242"
+        },
+        {
+            title : "Moore Park",
+            latlng : {latitude: -33.8937517650218, longitude: 151.221807102762},
+            colour: "#c34242"
+        },
+
+        {
+            title : "Royal Randwick",
+            latlng : {latitude: -33.9051772334994, longitude: 151.228854533418},
+            colour: "#c34242"
+        },
+
+        {
+            title : "Wansey Road",
+            latlng : {latitude: -33.91052598086, longitude: 151.235224601034},
+            colour: "#c34242"
+        },
+
+        {
+            title : "UNSW High Street",
+            latlng : {latitude: -33.916335208379, longitude: 151.235544924782},
+            colour: "#498c3a"
+        },
+    ]
+
+    return (
+      <View style={travelStyles.tcontainer}>
+        
+        <MapView style={travelStyles.mapStyle}
+            initialRegion={{
+                latitude: -33.8842090436080,
+                longitude: 151.20764895036,
+                latitudeDelta: 0.02,
+                longitudeDelta: 0.02,
+            }}
+
+            showsUserLocation={true}
+        >
+
+        {stops.map(marker => (
+            <Marker
+            coordinate={marker.latlng}
+            title={marker.title}
+            >
+                <Ionicons
+                    name={"ios-pin"} 
+                    size={40} 
+                    color={marker.colour}/>
+            </Marker>
+        ))}
+        
+        </MapView>
+
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}
+            style={{
+                
+                height: 75,
+                paddingLeft: '35%',
+                paddingRight: '15%',
+                
+                backgroundColor: '#ececec',
+                
+            }}
+            
+            contentContainerStyle={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+            }}
+        >
+            <View style={travelStyles.progressbackbar}/>
+            <View style={travelStyles.progresscirclecontainer}>
+                <View style={travelStyles.travelledCircle}/>
+                <View style={travelStyles.travelledCircle}/>
+                <View style={travelStyles.untravelledCircle}/>
+                <View style={travelStyles.untravelledCircle}/>
+                <View style={travelStyles.untravelledCircle}/>
+                <View style={travelStyles.untravelledCircle}/>
             </View>
-            <View style={travelStyles.darkTrip}>
-                <View>
-                    <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
-                    <Text style={travelStyles.duration}>20 mins · $3.37</Text>
-                </View>
-                <TouchableOpacity style={travelStyles.tripButton}>
-                    <Ionicons style={{marginTop: 3,}} name={"ios-arrow-forward"} size={35} color={"#fff"}/>
-                </TouchableOpacity>
-            </View>
+        </ScrollView>
+        
+        <View style={travelStyles.currstopcontainer}>
+            <Text>Current Stop</Text>
+            <Text>Wansey Road</Text>
+        </View>
+
+        <ScrollView style={{width: '100%'}} contentContainerStyle={travelStyles.tripsContainer} showsVerticalScrollIndicator={false}>
             <View style={travelStyles.lightTrip}>
                 <View>
                     <Text style={travelStyles.timestamp}>08:05 - 08:25</Text>
@@ -298,6 +386,8 @@ export default class TravelScreen extends React.Component {
                 >
                     <Stack.Screen name="Travel" component={TravelMain} />
                     <Stack.Screen name="Timetable" component={TravelTimetable} />
+                    <Stack.Screen name="Trip" component={TravelJourney} />
+
                 </Stack.Navigator>
             </NavigationContainer>
       
@@ -565,6 +655,90 @@ const travelStyles = StyleSheet.create({
     
         backgroundColor: '#c34242',
 
-    }
+    },
+
+    travelledCircle: {
+
+        height: 40,
+        width: 40,
+
+        marginRight: 20,
+        
+        backgroundColor: '#34A032',
+        
+        borderRadius: 20,
+        borderColor: '#fff',
+        borderWidth: 4,
+
+        shadowOffset: { width: 0,  height: 0 },
+        shadowColor: 'black',
+        shadowOpacity: 0.25,
+        shadowRadius: 3,
+        elevation: 1,
+   
+    },
+
+    untravelledCircle: {
+
+        height: 40,
+        width: 40,
+
+        marginRight: 20,
+        
+        backgroundColor: '#c4c4c4',
+        
+        borderRadius: 20,
+        borderColor: '#fff',
+        borderWidth: 4,
+
+        shadowOffset: { width: 0,  height: 0 },
+        shadowColor: 'black',
+        shadowOpacity: 0.25,
+        shadowRadius: 5,
+        elevation: 1,
+   
+    },
+    
+    progresscirclecontainer : {
+
+        display:'flex',
+        flexDirection:'row',
+
+        paddingRight: 125,
+    },
+
+    progressbackbar: {
+        position: 'absolute',
+
+        height: 8,
+        width: 340,
+        
+        backgroundColor: 'white',
+        borderRadius: 500,
+
+        shadowOffset: { width: 0,  height: 0 },
+        shadowColor: 'black',
+        shadowOpacity: 0.25,
+        shadowRadius: 5,
+        elevation: 1,
+    },
+
+    currstopcontainer: {
+        width: '100%',
+        height: 60,
+
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+
+        backgroundColor: '#c34242',
+
+        shadowOffset:{ width: 0,  height: 4 },
+        shadowColor: 'black',
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 1,
+        zIndex: 1,
+    },
 
 });
