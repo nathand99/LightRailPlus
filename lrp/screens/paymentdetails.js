@@ -6,7 +6,7 @@ import { StyleSheet, Text, TouchableOpacity, View, TextInput, KeyboardAvoidingVi
 export default class SignUpScreen extends React.Component {
 
     static navigationOptions = {
-        title: 'SignUp',
+        title: 'PaymentDetails',
     };
 
     render() {
@@ -184,6 +184,7 @@ inputView:{
     fontSize:25,
     //alignItems: 'left',
    // justifyContent: 'left'
+    //marginBottom:30
     //marginBottom:30
   },
 

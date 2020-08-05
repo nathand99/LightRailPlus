@@ -18,24 +18,57 @@ export default class SignUpScreen extends React.Component {
             <View style={styles.container}> 
                 <View style={styles.topbar}> 
                     <TouchableOpacity style={styles.back} 
-                        onPress={() => this.props.navigation.navigate('SignUp')}>
+                        onPress={() => this.props.navigation.navigate('PaymentDetails')}>
                         <Text style={styles.loginText}>←</Text>
                     </TouchableOpacity>
                     <Text style={styles.bigtext}>REGISTER</Text>
                 </View>
-                <Text style={styles.prompt}>CARD TYPE</Text>
-                <View style={styles.item} >
-                    <CheckBox checked={this.state.selectedLang===1} color="#fc5185" onPress={()=>this.setState({selectedLang:1})}/>
-                    <Text style={
-                    {...styles.checkBoxTxt,
-                        color:this.state.selectedLang===1?"#fc5185":"gray",
-                        fontWeight:this.state.selectedLang===1? "bold" :"normal"
-                    }}
-                    >Python</Text>
+                <Text style={styles.prompt}>SET CARD TYPE</Text>
+                <View style={styles.checkboxes} >
+                    <View style={styles.item} >
+                        <CheckBox checked={this.state.selected===1} color="#c34242" 
+                        onPress={()=>this.setState({selected:1})}/>
+                            <Text style={
+                            {...styles.checkBoxTxt,
+                                color:this.state.selected===1?"#c34242":"black",
+                                fontWeight:this.state.selected===1? "bold" :"normal"
+                            }}
+                            >ADULT FARE</Text>
+                    </View>
+                    <View style={styles.item} >
+                        <CheckBox checked={this.state.selected===2} color="#c34242" 
+                        onPress={()=>this.setState({selected:2})}/>
+                            <Text style={
+                            {...styles.checkBoxTxt,
+                                color:this.state.selected===2?"#c34242":"green",
+                                fontWeight:this.state.selected===2? "bold" :"normal"
+                            }}
+                            >CHILD FARE</Text>
+                    </View>
+                    <View style={styles.item} >
+                        <CheckBox checked={this.state.selected===3} color="#c34242" 
+                        onPress={()=>this.setState({selected:3})}/>
+                            <Text style={
+                            {...styles.checkBoxTxt,
+                                color:this.state.selected===3?"#c34242":"gold",
+                                fontWeight:this.state.selected===3? "bold" :"normal"
+                            }}
+                            >SENIOR FARE</Text>
+                    </View>
+                    <View style={styles.item} >
+                        <CheckBox checked={this.state.selected===4} color="#c34242" 
+                        onPress={()=>this.setState({selected:4})}/>
+                            <Text style={
+                            {...styles.checkBoxTxt,
+                                color:this.state.selected===4?"#c34242":"gray",
+                                fontWeight:this.state.selected===4? "bold" :"normal"
+                            }}
+                            >CONCESSION</Text>
+                    </View>
                 </View>
                 {/*} login button - chagne this to point to where its meant to go later*/}
                 <TouchableOpacity style={styles.loginBtn} 
-                onPress={() => this.props.navigation.navigate('Home')}>
+                onPress={() => this.props.navigation.navigate('Main')}>
                     <Text style={styles.loginText}>REGISTER</Text>
                 </TouchableOpacity>
             </View>
@@ -46,6 +79,27 @@ export default class SignUpScreen extends React.Component {
 
 // Stylesheet
 const styles = StyleSheet.create({
+item: {
+    width:300,
+    height: 50,
+    backgroundColor:"#fff",
+    padding:10,
+    marginTop:10,
+    marginBottom:10,
+    flexDirection:"row",
+    borderWidth:0.1,
+    borderRadius:25,
+    borderColor:"black",
+    alignItems: 'center',
+    //justifyContent: 'center',
+    },
+
+checkBoxTxt:{
+    marginLeft: 25,
+    fontSize:25,
+    fontWeight: "bold",
+    color: "black"
+},
 
 back: {
     color:"white",
@@ -75,7 +129,7 @@ container: {
     flex: 1,
     backgroundColor: '#e5e5e5',
     alignItems: 'center',
-    justifyContent: 'center',
+    //justifyContent: 'center',
 },
 
 inputcontainer: {
@@ -144,22 +198,13 @@ inputView:{
     //paddingTop:30,
   },
 
-  inputText: {
-    height:50,
-    color:"black"
-  },
-
-  forgot:{
-    color:"#c34242",
-    fontSize:11
-  },
-
   prompt:{
     color:"#c34242",
     fontSize:25,
     //alignItems: 'left',
    // justifyContent: 'left'
-    //marginBottom:30
+    marginBottom:30,
+    marginTop:10,
   },
 
   loginBtn:{
@@ -169,7 +214,7 @@ inputView:{
     borderRadius:25,
     alignItems:"center",
     justifyContent:"center",
-    marginTop:40,
+    marginTop:180,
     marginBottom:0
   },
   loginText: {
