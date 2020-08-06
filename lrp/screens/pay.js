@@ -567,7 +567,7 @@ const tripStyles = StyleSheet.create({
     display: 'flex',
     // flexDirection: 'row',
     // backgroundColor: '#E2F0CB',
-    fontFamily: 'Roboto',
+    fontFamily: 'Roboto_400Regular',
     fontSize: 24,
     fontWeight: 'bold',
     paddingVertical: 20,
