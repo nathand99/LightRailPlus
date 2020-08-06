@@ -1,25 +1,70 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, Alert, TouchableOpacity, View, ScrollView, Dimensions } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-// import { AppLoading } from 'expo';
-// import {
-//   useFonts,
-//   Fredoka_400Regular,
-// } from '@expo-google-fonts/Fredoka-One';
+import { Constants } from 'expo';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import Modal from 'react-native-modal';
 
 const Stack = createStackNavigator();
 
-function PAY({ navigation }) {
+function Pay({ navigation }) {
   
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const requestTapOn = () => {
+    setIsModalVisible(true);
+  }
+
+  const cancelTapOn = () => {
+    setIsModalVisible(false);
+  }
+
+  const confirmTapOn = () => {
+    setIsModalVisible(false);
+  }
+
   return (
     <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
+
       {/* AUTO PAYMENT BUTTON */}
       <View style={autoStyles.circle}>
-        <Text style={autoStyles.header}>AUTO</Text>
-      </View>
+        {/* Replace with modal */}
 
+        <View>
+          <TouchableWithoutFeedback onPress={()=>requestTapOn()}>
+            <Text style={autoStyles.header}>AUTO</Text>
+          </TouchableWithoutFeedback>
+
+          {/* Tap on Modal */}
+          <Modal isVisible={isModalVisible} style={styles.modal}>
+            <View>
+              <Text style={{textAlign:'center'}}>You have been automatically tapped on at</Text>
+              <Text style={modalStyles.dest}>Kensington</Text>
+            </View>
+
+            {/* Confirm/Cancel Buttons */}
+            <View style={modalStyles.modal}>
+              {/* <View style={{backgroundColor:'green'}}> */}
+                <TouchableOpacity style={{alignSelf: 'center', backgroundColor:'#b0b0b0',width:'80%',borderRadius: 25}} 
+                                  onPress={()=> {navigation.navigate('Pay'), cancelTapOn()}}>
+                  <Text style={{color:'white',textAlign:'center',padding:10}}>Cancel</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={{alignSelf: 'center', backgroundColor:'#34a032',width:'80%', borderRadius: 25}} onPress={() => {
+                  navigation.navigate('Tapped On'),
+                  confirmTapOn()}}>
+                  <Text style={{color:'white',textAlign:'center',padding:10}}>Confirm</Text>
+                </TouchableOpacity>
+              {/* </View> */}
+            </View>
+          </Modal>
+
+        </View>
+
+
+      </View>
       {/* Text */}
       <View style={styles.container}>
           {/* Logo Container */}
@@ -27,7 +72,7 @@ function PAY({ navigation }) {
             Automatic payments have been set up for this account. 
           </Text>
           <Text style={styles.body}>
-            Simply board a light rail carriage and you will be tapped on automatically.
+            Simply board a light rail carriage and you will be tapped on and off automatically.
           </Text>
       </View>
 
@@ -57,6 +102,7 @@ function PAY({ navigation }) {
       </TouchableOpacity>
     </ScrollView>
   );
+
 }
 
 function OptionsPayment() {
@@ -97,6 +143,209 @@ function OptionsPayment() {
 
     </ScrollView>  
   );
+}
+
+function tapOn({ navigation }) {
+  
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const requestTapOn = () => {
+    setIsModalVisible(true);
+  }
+
+  const cancelTapOn = () => {
+    setIsModalVisible(true);
+  }
+
+  const confirmTapOn = () => {
+    setIsModalVisible(false);
+  }
+
+  return (
+    <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
+      
+      {/* TAPPED ON INFORMATION */}
+      <TouchableWithoutFeedback onPress={()=>openOffModal()}>
+        <Text style={styles.body}>Tapped on at: Kensington</Text>
+      </TouchableWithoutFeedback>
+
+      {/* AUTO PAYMENT BUTTON */}
+      <View style={autoStyles.circle}>
+        {/* Replace with modal */}
+
+        <View>
+          <TouchableWithoutFeedback onPress={()=>requestTapOn()}>
+            <Text style={autoStyles.header}>AUTO</Text>
+          </TouchableWithoutFeedback>
+
+          {/* Tap on Modal */}
+          <Modal isVisible={isModalVisible} style={styles.modal}>
+            <View style={{ flex: 1,justifyContent:'center'}}>
+              <Text style={{textAlign:'center'}}>You have been automatically tapped off at</Text>
+              <Text style={modalStyles.dest}>Juniors Kingsford</Text>
+              <Text style={{textAlign:'center', paddingTop: 30}}>Your trip fare is</Text>
+              <Text style={modalStyles.dest}>$1.18</Text>
+              <Text style={{textAlign:'center', paddingTop: 30}}>and has been charged to</Text>
+              <Text style={modalStyles.dest}>Mastercard</Text>
+              <Text style={{textAlign:'center'}}>ending in 1234</Text>
+              <Text style={{textAlign:'center', paddingTop: 30}}>Thank you for travelling on the Light Rail!</Text>
+            </View>
+
+            <View style={modalStyles.modal}>
+              <View >
+
+                <TouchableOpacity style={{backgroundColor:'#34a032', alignSelf: 'stretch', borderRadius: 25}} 
+                                  onPress={()=>{ navigation.navigate('Paid'), confirmTapOn()}}>
+                  <Text style={{color:'white',textAlign:'center',padding:10}}>Confirm</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Modal>
+
+        </View>
+
+
+      </View>
+      {/* Text */}
+      <View style={styles.container}>
+          {/* Logo Container */}
+          <Text style={styles.body}>
+            Automatic payments have been set up for this account. 
+          </Text>
+          <Text style={styles.body}>
+            Simply board a light rail carriage and you will be tapped on and off automatically.
+          </Text>
+      </View>
+
+      {/* RECENT PAYMENTS */}
+      <View style={historyStyles.historyContainer}>
+        <Text style={historyStyles.header}>RECENT PAYMENTS</Text>
+        <View style={tripStyles.tripContainer}>
+          <Text style={tripStyles.tripRoute}>UNSW High Street to Central Chalmers Street 15 July 2020</Text>
+          <Text style={tripStyles.tripPrice}>-$2.99</Text>
+        </View>
+        <View style={tripStyles.tripContainer}>
+          <Text style={tripStyles.tripRoute}>UNSW High Street to Central Chalmers Street 14 July 2020</Text>
+          <Text style={tripStyles.tripPrice}>-$2.99</Text>
+        </View>
+        <View style={tripStyles.tripContainer}>
+          <Text style={tripStyles.tripRoute}>UNSW High Street to Central Chalmers Street 13 July 2020</Text>
+          <Text style={tripStyles.tripPrice}>-$2.99</Text>
+        </View>
+        <View style={tripStyles.tripContainer}>
+          <Text style={tripStyles.tripRoute}>UNSW High Street to Central Chalmers Street 12 July 2020</Text>
+          <Text style={tripStyles.tripPrice}>-$2.99</Text>
+        </View>
+      </View>
+
+      <TouchableOpacity onPress={() => navigation.navigate('Payment History')}>
+        <Text style={styles.button}>SEE ALL</Text>
+      </TouchableOpacity>
+    </ScrollView>
+  );
+
+}
+
+function Paid({ navigation }) {
+  
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const requestTapOn = () => {
+    setIsModalVisible(true);
+  }
+
+  const cancelTapOn = () => {
+    setIsModalVisible(false);
+  }
+
+  const confirmTapOn = () => {
+    setIsModalVisible(false);
+  }
+
+  return (
+    <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
+
+      {/* AUTO PAYMENT BUTTON */}
+      <View style={autoStyles.circle}>
+        {/* Replace with modal */}
+
+        <View>
+          <TouchableWithoutFeedback onPress={()=>requestTapOn()}>
+            <Text style={autoStyles.header}>AUTO</Text>
+          </TouchableWithoutFeedback>
+
+          {/* Tap on Modal */}
+          <Modal isVisible={isModalVisible} style={styles.modal}>
+            <View>
+              <Text style={{textAlign:'center'}}>You have been automatically tapped on at</Text>
+              <Text style={modalStyles.dest}>Kingsford</Text>
+            </View>
+
+            {/* Confirm/Cancel Buttons */}
+            <View style={modalStyles.modal}>
+              {/* <View style={{backgroundColor:'green'}}> */}
+                <TouchableOpacity style={{alignSelf: 'center', backgroundColor:'#b0b0b0',width:'80%',borderRadius: 25}} 
+                                  onPress={()=> {navigation.navigate('Pay'), cancelTapOn()}}>
+                  <Text style={{color:'white',textAlign:'center',padding:10}}>Cancel</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={{alignSelf: 'center', backgroundColor:'#34a032',width:'80%', borderRadius: 25}} onPress={() => {
+                  navigation.navigate('Tapped On'),
+                  confirmTapOn()}}>
+                  <Text style={{color:'white',textAlign:'center',padding:10}}>Confirm</Text>
+                </TouchableOpacity>
+              {/* </View> */}
+            </View>
+          </Modal>
+
+        </View>
+
+
+      </View>
+      {/* Text */}
+      <View style={styles.container}>
+          {/* Logo Container */}
+          <Text style={styles.body}>
+            Automatic payments have been set up for this account. 
+          </Text>
+          <Text style={styles.body}>
+            Simply board a light rail carriage and you will be tapped on and off automatically.
+          </Text>
+      </View>
+
+      {/* RECENT PAYMENTS */}
+      <View style={historyStyles.historyContainer}>
+        <Text style={historyStyles.header}>RECENT PAYMENTS</Text>
+
+        <View style={tripStyles.tripContainer}>
+          <Text style={tripStyles.tripRoute}>Kensington to Juniors Kingsford{"\n"}06 August 2020</Text>
+          <Text style={tripStyles.tripPrice}>-$1.18</Text>
+        </View>
+
+        <View style={tripStyles.tripContainer}>
+          <Text style={tripStyles.tripRoute}>UNSW High Street to Central Chalmers Street 15 July 2020</Text>
+          <Text style={tripStyles.tripPrice}>-$2.99</Text>
+        </View>
+        <View style={tripStyles.tripContainer}>
+          <Text style={tripStyles.tripRoute}>UNSW High Street to Central Chalmers Street 14 July 2020</Text>
+          <Text style={tripStyles.tripPrice}>-$2.99</Text>
+        </View>
+        <View style={tripStyles.tripContainer}>
+          <Text style={tripStyles.tripRoute}>UNSW High Street to Central Chalmers Street 13 July 2020</Text>
+          <Text style={tripStyles.tripPrice}>-$2.99</Text>
+        </View>
+        <View style={tripStyles.tripContainer}>
+          <Text style={tripStyles.tripRoute}>UNSW High Street to Central Chalmers Street 12 July 2020</Text>
+          <Text style={tripStyles.tripPrice}>-$2.99</Text>
+        </View>
+      </View>
+
+      <TouchableOpacity onPress={() => navigation.navigate('Payment History')}>
+        <Text style={styles.button}>SEE ALL</Text>
+      </TouchableOpacity>
+    </ScrollView>
+  );
+
 }
 
 // Screen code
@@ -140,10 +389,10 @@ export default class PayScreen extends React.Component {
           }}
             >
 
-          <Stack.Screen name="PAY" component={PAY} />
+          <Stack.Screen name="Pay" component={Pay} />
           <Stack.Screen name="Payment History" component={OptionsPayment} />
-          {/*<Stack.Screen name="Change Card Type" component={OptionsCardType} />
-          <Stack.Screen name="Display & Text Size" component={OptionsDisplay} /> */}
+          <Stack.Screen name="Tapped On" component={tapOn} />
+          <Stack.Screen name="Paid" component={Paid}></Stack.Screen> 
         </Stack.Navigator>
       </NavigationContainer>
 
@@ -197,6 +446,18 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     fontWeight: 'bold'
   },
+
+  modal: {
+    // alignSelf: 'center',
+    flex: 1,
+    alignItems: 'stretch',
+    justifyContent: 'space-around',
+    backgroundColor:'#ececec',
+    borderRadius: 25,
+    maxHeight:Dimensions.get('window').height * 0.8
+  },
+
+  
 });
 
 const autoStyles = StyleSheet.create({
@@ -209,6 +470,7 @@ const autoStyles = StyleSheet.create({
     borderWidth: 8,
     borderColor: 'white',
     justifyContent: "center",
+    marginTop: 20
   },
 
   header: {
@@ -218,9 +480,34 @@ const autoStyles = StyleSheet.create({
 		color: 'white',
     // fontFamily: 'Fredoka-One', cursive,
   }
-
-
 });
+
+const modalStyles = StyleSheet.create({
+  modal: {
+    // flex: 1,
+    justifyContent: 'space-around',
+    // position: 'absolute',
+    // bottom: 50,
+    borderRadius: 25,
+    // paddingTop: 20,
+    backgroundColor:'#ececec',
+    height: 100
+  },
+
+  confirm: {
+    // backgroundColor:'yellow',
+    alignSelf: 'stretch',
+    height: 30
+  },
+
+  dest: {
+    fontWeight: 'bold',
+    // alignSelf: 'center',
+    textAlign:'center',
+    fontSize: 40,
+    paddingHorizontal: 10
+  }
+})
 
 const historyStyles = StyleSheet.create({
   historyContainer: {
