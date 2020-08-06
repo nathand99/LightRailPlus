@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View, TextInput } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, TextInput, KeyboardAvoidingView, ScrollView } from 'react-native';
 
 // Screen code
 export default class LogInScreen extends React.Component {
@@ -19,37 +19,33 @@ export default class LogInScreen extends React.Component {
                     </TouchableOpacity>
                     <Text style={styles.bigtext}>LOG IN</Text>
                 </View>
-                <View style={styles.container}>     
+                <KeyboardAvoidingView style={styles.inputcontainer}>  
+                <ScrollView>  
                     <Text style={styles.prompt}>EMAIL ADDRESS</Text>
                     {/*} email input */}
                     <View style={styles.inputView}>      
                         <TextInput style={styles.inputText}
-                        //placeholder="EMAIL ADDRESS" 
-                        //placeholderTextColor="#000000"
-                        onChangeText={text => this.setState({email:text})}
-                        />
+                        onChangeText={text => this.setState({email:text})}/>
                     </View>
                     <Text style={styles.prompt}>PASSWORD</Text>
                     {/*} password input */}
                         <View style={styles.inputView} > 
                         <TextInput style={styles.inputText}
                             secureTextEntry={true}
-                            //placeholder="PASSWORD"
-                            //placeholderTextColor="#003f5c"
-                            onChangeText={text => this.setState({email:text})}
-                            />
+                            onChangeText={text => this.setState({email:text})}/>
                         </View>
                     {/*} forgot password - change this to point somewhere better*/}
                     <TouchableOpacity
                     onPress={() => this.props.navigation.navigate('Home')}>
                         <Text style={styles.forgot}>Forgot Password?</Text>
-                    </TouchableOpacity>
-                    {/*} login button - chagne this to point to where its meant to go later*/}
-                    <TouchableOpacity style={styles.loginBtn} 
+                    </TouchableOpacity>            
+                </ScrollView> 
+                </KeyboardAvoidingView>
+                {/*} login button*/}
+                <TouchableOpacity style={styles.loginBtn} 
                     onPress={() => this.props.navigation.navigate('Main')}>
                         <Text style={styles.loginText}>LOG IN</Text>
-                    </TouchableOpacity>
-                </View>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -82,40 +78,19 @@ topbar: {
     width:"100%",
 },
 
+inputcontainer: {
+    flex: 1,
+    backgroundColor: '#e5e5e5',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 20,
+},
+
 container: {
     flex: 1,
     backgroundColor: '#e5e5e5',
     alignItems: 'center',
     justifyContent: 'center',
-},
-
-logoContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-
-    height: '65%',
-},
-
-button: {
-    width: 250,
-    height: 55,
-    margin: 10,
-    borderRadius: 5000,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#ececec',
-    shadowOffset:{  width: 0,  height: 4,  },
-    shadowColor: 'black',
-    shadowOpacity: 0.25,
-},
-
-buttonText: {
-    color: '#c34242',
-    fontSize: 28,
-    fontFamily: 'Roboto_700Bold',
 },
 
 inputView:{
@@ -139,15 +114,13 @@ inputView:{
 
   forgot:{
     color:"#c34242",
-    fontSize:11
+    fontSize:11,
+    textAlign: "center",
   },
 
   prompt:{
     color:"#c34242",
     fontSize:25,
-    //alignItems: 'left',
-   // justifyContent: 'left'
-    //marginBottom:30
   },
 
   loginBtn:{
@@ -157,8 +130,8 @@ inputView:{
     borderRadius:25,
     alignItems:"center",
     justifyContent:"center",
-    marginTop:200,
-    marginBottom:0
+    marginTop:10,
+    marginBottom:40
   },
   loginText: {
     color:"white",

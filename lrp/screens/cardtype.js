@@ -95,7 +95,7 @@ item: {
     },
 
 checkBoxTxt:{
-    marginLeft: 25,
+    marginLeft: 50,
     fontSize:25,
     fontWeight: "bold",
     color: "black"
@@ -105,7 +105,7 @@ back: {
     color:"white",
     fontSize:40,
     fontWeight: "bold",
-    paddingTop: 30,
+    paddingTop: 40,
     paddingLeft: 20,
 },
 
@@ -113,11 +113,12 @@ bigtext: {
     color:"white",
     fontSize:40,
     fontWeight: "bold",
-    //paddingTop: 10,
+    paddingTop: 20,
     paddingLeft: 40,
     textAlign: "center",
     textAlignVertical: "center",
 },
+
 topbar: {
     flexDirection: 'row',
     backgroundColor: '#c34242',
@@ -138,50 +139,6 @@ inputcontainer: {
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: 0,
-},
-
-logoContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-
-    height: '65%',
-},
-
-button: {
-    width: 250,
-    height: 55,
-    margin: 10,
-    borderRadius: 5000,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#ececec',
-    shadowOffset:{  width: 0,  height: 4,  },
-    shadowColor: 'black',
-    shadowOpacity: 0.25,
-},
-
-buttonText: {
-    color: '#c34242',
-    fontSize: 28,
-    fontFamily: 'Roboto_700Bold',
-},
-
-logoImageContainer: {
-    width: 150,
-    height: 150,
-},
-
-logoText: {
-    fontSize: 48,
-    color: '#ececec',
-    fontFamily: 'Roboto_700Bold',
-
-    shadowOffset:{  width: 0,  height: 4,  },
-    shadowColor: 'black',
-    shadowOpacity: 0.25,
 },
 
 inputView:{
@@ -217,6 +174,7 @@ inputView:{
     marginTop:180,
     marginBottom:0
   },
+
   loginText: {
     color:"white",
     fontSize:30

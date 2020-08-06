@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View, TextInput, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, TextInput, KeyboardAvoidingView, ScrollView } from 'react-native';
 
 // Screen code
 export default class SignUpScreen extends React.Component {
@@ -19,12 +19,11 @@ export default class SignUpScreen extends React.Component {
                     </TouchableOpacity>
                     <Text style={styles.bigtext}>REGISTER</Text>
                 </View>
-                <Text style={styles.prompt}>PAYMENT DETAILS</Text>
-                <KeyboardAvoidingView style={styles.inputcontainer}
-                behavior= "0" enabled="False"
-                >  
+                <Text style={styles.title}>PAYMENT DETAILS</Text>
+                <KeyboardAvoidingView style={styles.inputcontainer}>  
+                <ScrollView> 
                     <Text style={styles.prompt}>CARD NAME</Text>
-                    {/*} name input */}
+                    {/*} card name input */}
                     <View style={styles.inputView} >      
                         <TextInput  
                         style={styles.inputText}
@@ -32,7 +31,7 @@ export default class SignUpScreen extends React.Component {
                         />
                     </View>   
                     <Text style={styles.prompt}>CARD NUMBER</Text>
-                    {/*} email input */}
+                    {/*} card number input */}
                     <View style={styles.inputView} >      
                         <TextInput  
                         style={styles.inputText}
@@ -40,7 +39,7 @@ export default class SignUpScreen extends React.Component {
                         />
                     </View>
                     <Text style={styles.prompt}>EXPIRY DATE</Text>
-                    {/*} password input */}
+                    {/*} expiry date input */}
                     <View style={styles.inputView} > 
                     <TextInput  
                         style={styles.inputText}
@@ -48,12 +47,10 @@ export default class SignUpScreen extends React.Component {
                         />
                     </View>
                     <Text style={styles.prompt}>CVV</Text>
-                    {/*} email input */}
+                    {/*} cvv input */}
                     <View style={styles.inputView} >      
                         <TextInput  
                         style={styles.inputText}
-                        //placeholder="EMAIL ADDRESS" 
-                        //placeholderTextColor="#000000"
                         onChangeText={text => this.setState({email:text})}
                         />
                     </View>
@@ -62,6 +59,7 @@ export default class SignUpScreen extends React.Component {
                     onPress={() => this.props.navigation.navigate('CardType')}>
                         <Text style={styles.loginText}>NEXT</Text>
                     </TouchableOpacity>
+                </ScrollView> 
                 </KeyboardAvoidingView>
             </View>
         );
@@ -76,7 +74,7 @@ back: {
     color:"white",
     fontSize:40,
     fontWeight: "bold",
-    paddingTop: 30,
+    paddingTop: 40,
     paddingLeft: 20,
 },
 
@@ -84,7 +82,7 @@ bigtext: {
     color:"white",
     fontSize:40,
     fontWeight: "bold",
-    //paddingTop: 10,
+    paddingTop: 20,
     paddingLeft: 40,
     textAlign: "center",
     textAlignVertical: "center",
@@ -94,6 +92,7 @@ topbar: {
     backgroundColor: '#c34242',
     height:100,
     width:"100%",
+    textAlignVertical: "center",
 },
 
 container: {
@@ -108,30 +107,7 @@ inputcontainer: {
     backgroundColor: '#e5e5e5',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: 0,
-},
-
-logoContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-
-    height: '65%',
-},
-
-button: {
-    width: 250,
-    height: 55,
-    margin: 10,
-    borderRadius: 5000,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#ececec',
-    shadowOffset:{  width: 0,  height: 4,  },
-    shadowColor: 'black',
-    shadowOpacity: 0.25,
+    paddingTop: 20,
 },
 
 buttonText: {
@@ -174,9 +150,10 @@ inputView:{
     color:"black"
   },
 
-  forgot:{
+  title:{
     color:"#c34242",
-    fontSize:11
+    fontSize:25,
+    paddingTop:10,
   },
 
   prompt:{
@@ -196,8 +173,10 @@ inputView:{
     alignItems:"center",
     justifyContent:"center",
     marginTop:40,
-    marginBottom:0
+    marginBottom:0,
+    alignSelf:"center",
   },
+
   loginText: {
     color:"white",
     fontSize:30
