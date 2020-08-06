@@ -35,7 +35,7 @@ function OptionsMain({ navigation }) {
             </TouchableOpacity>
             {/* ASSESSIBILITY */}
             <View style={optionsStyles.header}>
-                <Text style={optionsStyles.headerTitle}>ASSESSIBILITY</Text>
+                <Text style={optionsStyles.headerTitle}>ACCESSIBILITY</Text>
             </View>
             <TouchableOpacity 
                 onPress={() => navigation.navigate('Display & Text Size')}
