@@ -56,7 +56,7 @@ export default class SignUpScreen extends React.Component {
                     </View>
                     {/*} login button - chagne this to point to where its meant to go later*/}
                     <TouchableOpacity style={styles.loginBtn} 
-                    onPress={() => this.props.navigation.navigate('CardType')}>
+                    onPress={() => this.props.navigation.navigate('Main')}>
                         <Text style={styles.loginText}>NEXT</Text>
                     </TouchableOpacity>
                 </ScrollView> 

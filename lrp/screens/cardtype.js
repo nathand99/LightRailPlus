@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { CheckBox } from "native-base"
+//import { CheckBox } from "native-base"
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 // Screen code
