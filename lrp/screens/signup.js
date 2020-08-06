@@ -3,10 +3,10 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, TouchableOpacity, View, TextInput, KeyboardAvoidingView, ScrollView } from 'react-native';
 
 // Screen code
-export default class LogInScreen extends React.Component {
+export default class SignUpScreen extends React.Component {
 
     static navigationOptions = {
-        title: 'LogIn',
+        title: 'SignUp',
     };
 
     render() {
@@ -14,38 +14,48 @@ export default class LogInScreen extends React.Component {
             <View style={styles.container}> 
                 <View style={styles.topbar}> 
                     <TouchableOpacity style={styles.back} 
-                    onPress={() => this.props.navigation.navigate('Home')}>
+                        onPress={() => this.props.navigation.navigate('Home')}>
                         <Text style={styles.loginText}>←</Text>
                     </TouchableOpacity>
-                    <Text style={styles.bigtext}>LOG IN</Text>
+                    <Text style={styles.bigtext}>REGISTER</Text>
                 </View>
+                <Text style={styles.title}>PERSONAL DETAILS</Text>
                 <KeyboardAvoidingView style={styles.inputcontainer}>  
-                <ScrollView>  
+                <ScrollView> 
+                    <Text style={styles.prompt}>NAME</Text>
+                    {/*} name input */}
+                    <View style={styles.inputView} >      
+                        <TextInput  
+                        style={styles.inputText}
+                        //placeholder="EMAIL ADDRESS" 
+                        //placeholderTextColor="#000000"
+                        onChangeText={text => this.setState({email:text})}
+                        />
+                    </View>   
                     <Text style={styles.prompt}>EMAIL ADDRESS</Text>
                     {/*} email input */}
-                    <View style={styles.inputView}>      
-                        <TextInput style={styles.inputText}
-                        onChangeText={text => this.setState({email:text})}/>
+                    <View style={styles.inputView} >      
+                        <TextInput  
+                        style={styles.inputText}
+                        onChangeText={text => this.setState({email:text})}
+                        />
                     </View>
                     <Text style={styles.prompt}>PASSWORD</Text>
                     {/*} password input */}
                         <View style={styles.inputView} > 
-                        <TextInput style={styles.inputText}
+                        <TextInput  
+                            style={styles.inputText}
                             secureTextEntry={true}
-                            onChangeText={text => this.setState({email:text})}/>
+                            onChangeText={text => this.setState({email:text})}
+                            />
                         </View>
-                    {/*} forgot password - change this to point somewhere better*/}
-                    <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate('Home')}>
-                        <Text style={styles.forgot}>Forgot Password?</Text>
-                    </TouchableOpacity>            
+                    {/*} next button button - goto payment details*/}
+                    <TouchableOpacity style={styles.loginBtn} 
+                    onPress={() => this.props.navigation.navigate('PaymentDetails')}>
+                        <Text style={styles.loginText}>NEXT</Text>
+                    </TouchableOpacity>
                 </ScrollView> 
                 </KeyboardAvoidingView>
-                {/*} login button*/}
-                <TouchableOpacity style={styles.loginBtn} 
-                    onPress={() => this.props.navigation.navigate('Main')}>
-                        <Text style={styles.loginText}>LOG IN</Text>
-                </TouchableOpacity>
             </View>
         );
     }
@@ -62,12 +72,13 @@ back: {
     paddingTop: 40,
     paddingLeft: 20,
 },
+
 bigtext: {
     color:"white",
     fontSize:40,
     fontWeight: "bold",
     paddingTop: 20,
-    paddingLeft: 70,
+    paddingLeft: 40,
     textAlign: "center",
     textAlignVertical: "center",
 },
@@ -78,6 +89,13 @@ topbar: {
     width:"100%",
 },
 
+container: {
+    flex: 1,
+    backgroundColor: '#e5e5e5',
+    alignItems: 'center',
+    justifyContent: 'center',
+},
+
 inputcontainer: {
     flex: 1,
     backgroundColor: '#e5e5e5',
@@ -86,15 +104,7 @@ inputcontainer: {
     paddingTop: 20,
 },
 
-container: {
-    flex: 1,
-    backgroundColor: '#e5e5e5',
-    alignItems: 'center',
-    justifyContent: 'center',
-},
-
 inputView:{
-    display: "flex",
     width:300,
     backgroundColor:"#ECECEC",
     borderWidth:0.1,
@@ -104,18 +114,18 @@ inputView:{
     marginTop:8,
     marginBottom:20,
     justifyContent:"center",
-    padding:10,
+    padding:10
   },
 
   inputText: {
-    height:"100%",
+    height:50,
     color:"black"
   },
 
-  forgot:{
+  title:{
     color:"#c34242",
-    fontSize:11,
-    textAlign: "center",
+    fontSize:25,
+    paddingTop:10,
   },
 
   prompt:{
@@ -130,8 +140,9 @@ inputView:{
     borderRadius:25,
     alignItems:"center",
     justifyContent:"center",
-    marginTop:10,
-    marginBottom:40
+    marginTop:150,
+    marginBottom:0,
+    alignSelf:"center",
   },
   loginText: {
     color:"white",
