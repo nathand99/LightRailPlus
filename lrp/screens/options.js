@@ -1,15 +1,16 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View, ScrollView, Switch, Image} from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, ScrollView, Switch, Image, Button} from 'react-native';
 import { Checkbox } from 'react-native-paper';
 
 import Slider from '@react-native-community/slider'
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer} from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
 
 function OptionsMain({ navigation }) {
+
     return (
         <ScrollView contentContainerStyle={optionsStyles.container} showsVerticalScrollIndicator={false}>
         
@@ -68,7 +69,8 @@ function OptionsMain({ navigation }) {
 
             {/* LOG OUT BUTTON */}
             <TouchableOpacity
-                //onPress={() => this.props.navigation.navigate('Home')}>
+                //onPress={() => navigation.goBack()}
+                onPress={() => navigation.popToTop(null)}
                 style={optionsStyles.button}>
                 <Text style={optionsStyles.buttonText}>LOG OUT</Text>
             </TouchableOpacity>
@@ -364,7 +366,21 @@ export default class OptionsScreen extends React.Component {
                 >
 
                     <Stack.Screen name="OPTIONS" component={OptionsMain} />
-                    <Stack.Screen name="Change Payment Details" component={OptionsPayment} />
+                    <Stack.Screen 
+                        name="Change Payment Details" 
+                        component={OptionsPayment}
+                        /*options={{
+                            headerLeft: () => (
+                                <Button
+                                    //onPress={() => this.props.navigation.popToTop()}
+                                    //onPress={() => this.props.navigation.goBack()} <-- gets to PAY
+                                    onPress={() => this.props.navigation.navigate('Options')}
+                                    title="<"
+                                    color="#ececec"
+                                />
+                            ),
+                        }}*/
+                    />
                     <Stack.Screen name="Change Fare Type" component={OptionsFareType} />
                     <Stack.Screen name="Display & Text Size" component={OptionsDisplay} />
                 </Stack.Navigator>
