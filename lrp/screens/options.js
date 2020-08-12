@@ -29,9 +29,9 @@ function OptionsMain({ navigation }) {
                 <Text style={optionsStyles.text}>Change Payment Details</Text>
             </TouchableOpacity >
             <TouchableOpacity 
-                onPress={() => navigation.navigate('Change Card Type')}
+                onPress={() => navigation.navigate('Change Fare Type')}
                 style={optionsStyles.darkRow}>
-                <Text style={optionsStyles.text}>Change Card Type</Text>
+                <Text style={optionsStyles.text}>Change Fare Type</Text>
             </TouchableOpacity>
             {/* ASSESSIBILITY */}
             <View style={optionsStyles.header}>
@@ -138,7 +138,7 @@ function OptionsPayment() {
     );
 }
 
-function OptionsCardType() {
+function OptionsFareType() {
 
     const [checked1, setChecked1] = React.useState(true);
     const [checked2, setChecked2] = React.useState(false);
@@ -164,9 +164,9 @@ function OptionsCardType() {
                     <Text style={optionsStyles.paymentSubtext}>Since 06/07/2019</Text>
                 </View>
             </View>
-            {/* CHANGE CARD */}
+            {/* CHANGE FARE */}
             <View>
-                <Text style={optionsStyles.subheader}>Change Card</Text>
+                <Text style={optionsStyles.subheader}>Change Fare</Text>
             </View>
             {/* ADULT FARE */}
             <View style={optionsStyles.lightRow}>
@@ -184,7 +184,7 @@ function OptionsCardType() {
                     />
                 </View>
                 <View>
-                    <Text style={optionsStyles.paymentText}>ADULT FARE</Text>
+                    <Text style={optionsStyles.fareTypeText}>ADULT FARE</Text>
                 </View>
             </View>
             {/* CHILD FARE */}
@@ -203,7 +203,7 @@ function OptionsCardType() {
                     />
                 </View>
                 <View>
-                    <Text style={optionsStyles.paymentText}>CHILD FARE</Text>
+                    <Text style={optionsStyles.fareTypeText}>CHILD FARE</Text>
                 </View>
             </View>
             {/* SENIOR FARE */}
@@ -222,7 +222,7 @@ function OptionsCardType() {
                     />
                 </View>
                 <View>
-                    <Text style={optionsStyles.paymentText}>SENIOR FARE</Text>
+                    <Text style={optionsStyles.fareTypeText}>SENIOR FARE</Text>
                 </View>
             </View>
             {/* CONCESSION */}
@@ -241,7 +241,7 @@ function OptionsCardType() {
                     />
                 </View>
                 <View>
-                    <Text style={optionsStyles.paymentText}>CONCESSION</Text>
+                    <Text style={optionsStyles.fareTypeText}>CONCESSION</Text>
                 </View>
             </View>
             {/* INFO */}
@@ -365,7 +365,7 @@ export default class OptionsScreen extends React.Component {
 
                     <Stack.Screen name="OPTIONS" component={OptionsMain} />
                     <Stack.Screen name="Change Payment Details" component={OptionsPayment} />
-                    <Stack.Screen name="Change Card Type" component={OptionsCardType} />
+                    <Stack.Screen name="Change Fare Type" component={OptionsFareType} />
                     <Stack.Screen name="Display & Text Size" component={OptionsDisplay} />
                 </Stack.Navigator>
             </NavigationContainer>
@@ -504,9 +504,17 @@ const optionsStyles = StyleSheet.create({
 
     paymentText: {
 
+        fontFamily: 'Roboto_700Bold',
+        fontSize: 21,
+        paddingRight: 200,
+        paddingLeft: 15,
+
+    },
+
+    fareTypeText: {
+
         fontFamily: 'Roboto_400Regular',
         fontSize: 21,
-        fontWeight: 'bold',
         paddingRight: 200,
         paddingLeft: 15,
 
