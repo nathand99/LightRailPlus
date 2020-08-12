@@ -39,6 +39,12 @@ export default class HomeScreen extends React.Component {
                 <Text style={styles.buttonText}>LOG IN</Text>
                 </TouchableOpacity>
 
+                {/* skip Button */}
+                <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('Main')}
+                style={styles.butto}>
+                <Text style={styles.skip}>SKIP</Text>
+                </TouchableOpacity>
                 <StatusBar style="light" />
 
             </View>
@@ -84,6 +90,13 @@ button: {
     shadowColor: 'black',
     shadowOpacity: 0.25,
     shadowRadius: 4,
+},
+
+skip: {
+    paddingTop: 10,
+    color: 'white',
+    fontSize: 18,
+    fontFamily: 'Roboto_700Bold',
 },
 
 buttonText: {

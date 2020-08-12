@@ -1,71 +1,122 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-//import { CheckBox } from "native-base"
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Checkbox } from 'react-native-paper';
+import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
+
+
 
 // Screen code
 export default class SignUpScreen extends React.Component {
 
-    static navigationOptions = {
-        title: 'CardType',
-    };
-    state={
-        selected:0
-    }
-
     render() {
         return (
-            <View style={styles.container}> 
-                <View style={styles.topbar}> 
-                    <TouchableOpacity style={styles.back} 
-                        onPress={() => this.props.navigation.navigate('PaymentDetails')}>
-                        <Text style={styles.loginText}>←</Text>
-                    </TouchableOpacity>
-                    <Text style={styles.bigtext}>REGISTER</Text>
+            <View style={optionsStyles.container}>
+                {/* CURRENT CARD */}
+                <View>
+                    <Text style={optionsStyles.subheader}>Current Card</Text>
                 </View>
-                <Text style={styles.prompt}>SET CARD TYPE</Text>
-                <View style={styles.checkboxes} >
-                    <View style={styles.item} >
-                        <CheckBox checked={this.state.selected===1} color="#c34242" 
-                        onPress={()=>this.setState({selected:1})}/>
-                            <Text style={
-                            {...styles.checkBoxTxt,
-                                color:this.state.selected===1?"#c34242":"black",
-                                fontWeight:this.state.selected===1? "bold" :"normal"
-                            }}
-                            >ADULT FARE</Text>
+                <View style={optionsStyles.lightRow}>
+                    <View>
+                        <Image 
+                            style={{width: 40,height: 25}} 
+                            source={require('./images/adult_opal.png')} 
+                        />
                     </View>
-                    <View style={styles.item} >
-                        <CheckBox checked={this.state.selected===2} color="#c34242" 
-                        onPress={()=>this.setState({selected:2})}/>
-                            <Text style={
-                            {...styles.checkBoxTxt,
-                                color:this.state.selected===2?"#c34242":"green",
-                                fontWeight:this.state.selected===2? "bold" :"normal"
-                            }}
-                            >CHILD FARE</Text>
-                    </View>
-                    <View style={styles.item} >
-                        <CheckBox checked={this.state.selected===3} color="#c34242" 
-                        onPress={()=>this.setState({selected:3})}/>
-                            <Text style={
-                            {...styles.checkBoxTxt,
-                                color:this.state.selected===3?"#c34242":"gold",
-                                fontWeight:this.state.selected===3? "bold" :"normal"
-                            }}
-                            >SENIOR FARE</Text>
-                    </View>
-                    <View style={styles.item} >
-                        <CheckBox checked={this.state.selected===4} color="#c34242" 
-                        onPress={()=>this.setState({selected:4})}/>
-                            <Text style={
-                            {...styles.checkBoxTxt,
-                                color:this.state.selected===4?"#c34242":"gray",
-                                fontWeight:this.state.selected===4? "bold" :"normal"
-                            }}
-                            >CONCESSION</Text>
+                    <View>
+                        <Text style={optionsStyles.paymentText}>ADULT FARE</Text>
+                        <Text style={optionsStyles.paymentSubtext}>Since 06/07/2019</Text>
                     </View>
                 </View>
+                {/* CHANGE CARD */}
+                <View>
+                    <Text style={optionsStyles.subheader}>Change Card</Text>
+                </View>
+                {/* ADULT FARE */}
+                <View style={optionsStyles.lightRow}>
+                    <Checkbox
+                        status={checked1 ? 'checked' : 'unchecked'}
+                        onPress={() => {
+                            setChecked1(!checked1);
+                        }}
+                        color='#c34242'
+                    />
+                    <View>
+                        <Image 
+                            style={{width: 40,height: 25}} 
+                            source={require('./images/adult_opal.png')} 
+                        />
+                    </View>
+                    <View>
+                        <Text style={optionsStyles.paymentText}>ADULT FARE</Text>
+                    </View>
+                </View>
+                {/* CHILD FARE */}
+                <View style={optionsStyles.darkRow}>
+                    <Checkbox
+                        status={checked2 ? 'checked' : 'unchecked'}
+                        onPress={() => {
+                            setChecked2(!checked2);
+                        }}
+                        color='#c34242'
+                    />
+                    <View>
+                        <Image 
+                            style={{width: 40,height: 25}} 
+                            source={require('./images/child_opal.png')} 
+                        />
+                    </View>
+                    <View>
+                        <Text style={optionsStyles.paymentText}>CHILD FARE</Text>
+                    </View>
+                </View>
+                {/* SENIOR FARE */}
+                <View style={optionsStyles.lightRow}>
+                    <Checkbox
+                        status={checked3 ? 'checked' : 'unchecked'}
+                        onPress={() => {
+                            setChecked3(!checked3);
+                        }}
+                        color='#c34242'
+                    />
+                    <View>
+                        <Image 
+                            style={{width: 40,height: 25}} 
+                            source={require('./images/senior_opal.png')} 
+                        />
+                    </View>
+                    <View>
+                        <Text style={optionsStyles.paymentText}>SENIOR FARE</Text>
+                    </View>
+                </View>
+                {/* CONCESSION */}
+                <View style={optionsStyles.darkRow}>
+                    <Checkbox
+                        status={checked4 ? 'checked' : 'unchecked'}
+                        onPress={() => {
+                            setChecked4(!checked4);
+                        }}
+                        color='#c34242'
+                    />
+                    <View>
+                        <Image 
+                            style={{width: 40,height: 25}} 
+                            source={require('./images/concession_opal.png')} 
+                        />
+                    </View>
+                    <View>
+                        <Text style={optionsStyles.paymentText}>CONCESSION</Text>
+                    </View>
+                </View>
+                {/* INFO */}
+                <View style={optionsStyles.infoRow}>
+                    <Text style={optionsStyles.infoText}>
+                        Some selection may require verification of eligibility
+                        via phone call. Please co-operate with our customer
+                        service agents if you wish to change your card type to
+                        one of these selections.
+                    </Text>
+                </View>
+
                 {/*} login button - chagne this to point to where its meant to go later*/}
                 <TouchableOpacity style={styles.loginBtn} 
                 onPress={() => this.props.navigation.navigate('Main')}>
@@ -179,4 +230,175 @@ inputView:{
     color:"white",
     fontSize:30
   }
+});
+
+const optionsStyles = StyleSheet.create({
+
+    container: {
+
+        display: 'flex',
+        //alignItems: 'center',
+        width: '100%',
+
+        backgroundColor: '#ececec',
+
+    },
+
+    header: {
+
+        display: 'flex',
+        justifyContent: 'center',
+        
+        paddingLeft: 12,
+        
+        height: 65,
+        width: '100%',
+        
+        backgroundColor: "#c34242",
+
+    },
+
+    headerTitle: {
+
+        fontFamily: 'Roboto_700Bold',
+        fontSize: 30,
+        textTransform: "uppercase",
+        
+        shadowOffset:{ width: 0,  height: 4 },
+        shadowColor: 'black',
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 1,
+        zIndex: 1,
+
+        color: '#ececec',
+
+    },
+
+    subheader: {
+
+        fontFamily: 'Roboto_700Bold',
+        fontSize: 24,
+
+        margin: 17,
+        textTransform: "uppercase",
+        color: '#c34242',
+        
+    },
+
+    lightRow: {
+
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingLeft: 15,
+        
+        height: 60,
+        width: '100%',
+
+        backgroundColor: '#ececec',
+
+    },
+
+    darkRow: {
+
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingLeft: 15,
+        
+        height: 60,
+        width: '100%',
+
+        backgroundColor: '#d2d2d2',
+
+    },
+
+    infoRow: {
+
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingLeft: 15,
+        
+        height: 100,
+        width: '100%',
+
+        backgroundColor: '#ececec',
+
+    },
+
+    sliderRow: {
+        
+        height: 50,
+        width: '100%',
+
+        backgroundColor: '#d2d2d2',
+
+    },
+
+    text: {
+
+        fontFamily: 'Roboto_400Regular',
+        fontSize: 24,
+
+    },
+
+    paymentText: {
+
+        fontFamily: 'Roboto_400Regular',
+        fontSize: 21,
+        fontWeight: 'bold',
+        paddingRight: 200,
+        paddingLeft: 15,
+
+    },
+
+    paymentSubtext: {
+
+        fontFamily: 'Roboto_400Regular',
+        fontSize: 16,
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        paddingRight: 200,
+        paddingLeft: 15,
+
+    },
+
+    infoText: {
+
+        fontFamily: 'Roboto_400Regular',
+        fontSize: 15,
+        color: '#505050',
+
+    },
+
+    button: {
+
+        width: 300,
+        height: 55,
+    
+        margin: 75,
+    
+        borderRadius: 5000,
+    
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        alignSelf: 'center',
+    
+        backgroundColor: '#c34242',
+
+    },
+    
+    buttonText: {
+        color: '#ececec',
+        fontSize: 28,
+        fontFamily: 'Roboto_700Bold',
+    },
+
+
 });
