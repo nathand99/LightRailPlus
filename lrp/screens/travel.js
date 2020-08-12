@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Button, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { TouchableHighlight, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Button, Overlay } from 'react-native-elements';
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 
@@ -61,6 +62,12 @@ function TravelMain({ navigation }) {
 
 function TravelTimetable({navigation}) {
 
+    const [visible, setVisible] = useState(false);
+
+    const toggleOverlay = () => {
+      setVisible(!visible);
+    };  
+
     const stops = [
         {
             title : "Central Chalmers Street",
@@ -101,9 +108,24 @@ function TravelTimetable({navigation}) {
       <View style={travelStyles.tcontainer}>
         
         <View style={travelStyles.dheader}>
-            <Ionicons style={travelStyles.fStar} name={'ios-star-outline'} size={25}></Ionicons>
             <Text style={travelStyles.dheaderTitle}>Central Chalmers Street to UNSW High St</Text>
         </View>
+
+        <Overlay isVisible={visible} onBackdropPress={toggleOverlay} overlayStyle={{width: 300, height: 350, borderRadius: 15, padding: 0,}}>
+            <View style={travelStyles.trackworkHeaderContainer}>
+                <Text style={travelStyles.trackworkHeader}>Trackwork Info</Text>
+            </View>
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <View style={{ padding: 20, marginBottom: 15}}>
+                    <Text style={travelStyles.trackworkInfo}>
+                        As a result of the latest directives from the Australian Government around public gatherings, the L1 light rail services operating from 11pm (midnight on Friday) to 6am between Central Grand Concourse and The Star in both directions, have been suspended since 11pm Saturday 28 March 2020 until further notice. 
+                        {"\n"}{"\n"}
+                        From Friday 22 May, daily light rail services have fully resumed, with all services stopping at The Star between 6am and 11pm (midnight on Friday). This follows the gradual re-opening of The Star Sydney restaurants only.
+                    </Text>
+                </View>
+            </ScrollView>
+        </Overlay>
+
 
         <MapView style={travelStyles.mapStyle}
             initialRegion={{
@@ -127,7 +149,11 @@ function TravelTimetable({navigation}) {
                     color={marker.colour}/>
             </Marker>
         ))}
-        
+
+        <TouchableOpacity style={travelStyles.infobutton} onPress={toggleOverlay}>
+            <Ionicons name={"md-alert"} size={50} color={"#fff"}/>
+        </TouchableOpacity>
+
         </MapView>
         
         <View style={travelStyles.tripsScrollContainer}>
@@ -213,6 +239,12 @@ function TravelTimetable({navigation}) {
 
 function TravelJourney() {
 
+    const [visible, setVisible] = useState(false);
+
+    const toggleOverlay = () => {
+      setVisible(!visible);
+    };  
+
     const stops = [
         {
             title : "Central Chalmers Street",
@@ -251,6 +283,22 @@ function TravelJourney() {
 
     return (
       <View style={travelStyles.tcontainer}>
+
+        <Overlay isVisible={visible} onBackdropPress={toggleOverlay} overlayStyle={{width: 300, height: 350, borderRadius: 15, padding: 0,}}>
+            <View style={travelStyles.trackworkHeaderContainer}>
+                <Text style={travelStyles.trackworkHeader}>Trackwork Info</Text>
+            </View>
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <View style={{ padding: 20, marginBottom: 15}}>
+                    <Text style={travelStyles.trackworkInfo}>
+                        As a result of the latest directives from the Australian Government around public gatherings, the L1 light rail services operating from 11pm (midnight on Friday) to 6am between Central Grand Concourse and The Star in both directions, have been suspended since 11pm Saturday 28 March 2020 until further notice. 
+                        {"\n"}{"\n"}
+                        From Friday 22 May, daily light rail services have fully resumed, with all services stopping at The Star between 6am and 11pm (midnight on Friday). This follows the gradual re-opening of The Star Sydney restaurants only.
+                    </Text>
+                </View>
+            </ScrollView>
+        </Overlay>
+
         
         <MapView style={travelStyles.mapStyle}
             initialRegion={{
@@ -274,7 +322,9 @@ function TravelJourney() {
                     color={marker.colour}/>
             </Marker>
         ))}
-        
+            <TouchableOpacity style={travelStyles.infobutton} onPress={toggleOverlay}>
+                <Ionicons name={"md-alert"} size={50} color={"#fff"}/>
+            </TouchableOpacity>
         </MapView>
 
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}
@@ -557,10 +607,11 @@ const travelStyles = StyleSheet.create({
     mapStyle: {
         width: '100%',
         height: 250,
+        padding: 10,
     },    
 
     button: {
-
+        
         width: 300,
         height: 55,
     
@@ -572,6 +623,25 @@ const travelStyles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         alignSelf: 'center',
+    
+        backgroundColor: '#c34242',
+
+    },
+
+    infobutton: {
+
+        width: 50,
+        height: 50,
+
+        borderRadius: 50,
+        
+        // position: "relative",
+        // top: 10,
+        // left: 10,
+
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
     
         backgroundColor: '#c34242',
 
@@ -816,6 +886,50 @@ const travelStyles = StyleSheet.create({
         backgroundColor: '#d2d2d2',
 
     },
+    
+    trackworkHeaderContainer: {
+
+        width: '100%',
+        height: 50,
+
+        backgroundColor: '#c34242',
+
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
+
+        shadowOffset:{ width: 0,  height: 4 },
+        shadowColor: 'black',
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 1,
+
+    },
+    
+    trackworkHeader: {
+
+        fontFamily: 'Roboto_700Bold',
+        fontSize: 28,
+        color: '#ececec',
+
+        shadowOffset:{ width: 0,  height: 4 },
+        shadowColor: 'black',
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 1,
+
+    },
+
+    trackworkInfo: {
+
+        fontFamily: 'Roboto_400Regular',
+        fontSize: 18,
+        color: '#242424',
+
+    }
 
 
 });
