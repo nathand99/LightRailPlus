@@ -33,7 +33,7 @@ function SignUp({ navigation }) {
                     style={styles.inputText}
                     //placeholder="EMAIL ADDRESS" 
                     //placeholderTextColor="#000000"
-                    onChangeText={text => this.setState({email:text})}
+                    //onChangeText={text => this.setState({email:text})}
                     />
                 </View>   
                 <Text style={styles.prompt}>EMAIL ADDRESS</Text>
@@ -41,7 +41,7 @@ function SignUp({ navigation }) {
                 <View style={styles.inputView} >      
                     <TextInput  
                     style={styles.inputText}
-                    onChangeText={text => this.setState({email:text})}
+                    //onChangeText={text => this.setState({email:text})}
                     />
                 </View>
                 <Text style={styles.prompt}>PASSWORD</Text>
@@ -50,7 +50,7 @@ function SignUp({ navigation }) {
                     <TextInput  
                         style={styles.inputText}
                         secureTextEntry={true}
-                        onChangeText={text => this.setState({email:text})}
+                        //onChangeText={text => this.setState({email:text})}
                         />
                     </View>
                 {/*} next button button - goto payment details*/}
@@ -92,7 +92,7 @@ function PaymentDetails({ navigation }) {
                 <View style={styles.inputView} >      
                     <TextInput  
                     style={styles.inputText}
-                    onChangeText={text => this.setState({email:text})}
+                    //onChangeText={text => this.setState({email:text})}
                     />
                 </View>
                 <Text style={styles.prompt}>EXPIRY DATE</Text>
@@ -100,7 +100,7 @@ function PaymentDetails({ navigation }) {
                 <View style={styles.inputView} > 
                 <TextInput  
                     style={styles.inputText}
-                    onChangeText={text => this.setState({email:text})}
+                   // onChangeText={text => this.setState({email:text})}
                     />
                 </View>
                 <Text style={styles.prompt}>CVV</Text>
@@ -108,10 +108,10 @@ function PaymentDetails({ navigation }) {
                 <View style={styles.inputView} >      
                     <TextInput  
                     style={styles.inputText}
-                    onChangeText={text => this.setState({email:text})}
+                    //onChangeText={text => this.setState({email:text})}
                     />
                 </View>
-                {/*} login button - chagne this to point to where its meant to go later*/}
+                {/*} next button*/}
                 <TouchableOpacity style={styles.loginBtn} 
                 onPress={() => navigation.navigate('Select Card Type')}>
                     <Text style={styles.loginText}>NEXT</Text>
@@ -122,9 +122,9 @@ function PaymentDetails({ navigation }) {
     );
 }
 
-function CardType({ navigation }) {
+function CardType({navigation}) {
 
-    const [checked1, setChecked1] = React.useState(true);
+    const [checked1, setChecked1] = React.useState(false);
     const [checked2, setChecked2] = React.useState(false);
     const [checked3, setChecked3] = React.useState(false);
     const [checked4, setChecked4] = React.useState(false);
@@ -138,6 +138,9 @@ function CardType({ navigation }) {
                     status={checked1 ? 'checked' : 'unchecked'}
                     onPress={() => {
                         setChecked1(!checked1);
+                        setChecked2(false);
+                        setChecked3(false);
+                        setChecked4(false);
                     }}
                     color='#c34242'
                 />
@@ -157,6 +160,9 @@ function CardType({ navigation }) {
                     status={checked2 ? 'checked' : 'unchecked'}
                     onPress={() => {
                         setChecked2(!checked2);
+                        setChecked1(false);
+                        setChecked3(false);
+                        setChecked4(false);
                     }}
                     color='#c34242'
                 />
@@ -175,7 +181,10 @@ function CardType({ navigation }) {
                 <Checkbox
                     status={checked3 ? 'checked' : 'unchecked'}
                     onPress={() => {
+                        setChecked1(false);
+                        setChecked2(false);
                         setChecked3(!checked3);
+                        setChecked4(false);
                     }}
                     color='#c34242'
                 />
@@ -195,6 +204,9 @@ function CardType({ navigation }) {
                     status={checked4 ? 'checked' : 'unchecked'}
                     onPress={() => {
                         setChecked4(!checked4);
+                        setChecked1(false);
+                        setChecked3(false);
+                        setChecked2(false);
                     }}
                     color='#c34242'
                 />
@@ -208,8 +220,8 @@ function CardType({ navigation }) {
                     <Text style={optionsStyles.paymentText}>CONCESSION</Text>
                 </View>
             </View>
-            {/*} login button - chagne this to point to where its meant to go later*/}
-            <TouchableOpacity style={styles.loginBtn1} 
+            {/*} register button*/}
+            <TouchableOpacity style={styles.loginBtn3} 
             onPress={() => navigation.navigate('MainScreen')}>
                 <Text style={styles.loginText}>REGISTER</Text>
             </TouchableOpacity>
@@ -366,6 +378,17 @@ inputView:{
     alignItems:"center",
     justifyContent:"center",
     marginTop:150,
+    marginBottom:0,
+    alignSelf:"center",
+  },
+  loginBtn3:{
+    width:250,
+    height:55,
+    backgroundColor:"#c34242",
+    borderRadius:25,
+    alignItems:"center",
+    justifyContent:"center",
+    marginTop:120,
     marginBottom:0,
     alignSelf:"center",
   },

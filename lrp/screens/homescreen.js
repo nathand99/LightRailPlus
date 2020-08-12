@@ -41,8 +41,7 @@ export default class HomeScreen extends React.Component {
 
                 {/* skip Button */}
                 <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('Main')}
-                style={styles.butto}>
+                onPress={() => this.props.navigation.navigate('Main')}>
                 <Text style={styles.skip}>SKIP</Text>
                 </TouchableOpacity>
                 <StatusBar style="light" />
