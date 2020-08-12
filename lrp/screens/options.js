@@ -315,7 +315,6 @@ function OptionsDisplay() {
     );
 }
 
-
 // Screen code
 export default class OptionsScreen extends React.Component {
 
