@@ -10,7 +10,7 @@
   "dependencies": {
     "@expo-google-fonts/roboto": "^0.1.0",
     "@react-native-community/masked-view": "0.1.10",
-    "@react-native-community/slider": "^3.0.3",
+    "@react-native-community/slider": "3.0.0",
     "@react-navigation/bottom-tabs": "^5.7.2",
     "@react-navigation/native": "^5.7.1",
     "@react-navigation/stack": "^5.7.1",
