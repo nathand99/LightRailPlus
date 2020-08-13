@@ -80,7 +80,7 @@ function OptionsMain({ navigation }) {
 
 function OptionsPayment() {
 
-    const [isSwitchOn, setIsSwitchOn] = React.useState(false);
+    const [isSwitchOn, setIsSwitchOn] = React.useState(true);
     const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
 
     return (
@@ -179,7 +179,7 @@ function OptionsFareType() {
                 />
                 <View>
                     <Image 
-                        style={{width: 40,height: 25}} 
+                        style={{width: 40,height: 25, marginLeft: 15}} 
                         source={require('./images/adult_opal.png')} 
                     />
                 </View>
@@ -198,7 +198,7 @@ function OptionsFareType() {
                 />
                 <View>
                     <Image 
-                        style={{width: 40,height: 25}} 
+                        style={{width: 40,height: 25, marginLeft: 15}} 
                         source={require('./images/child_opal.png')} 
                     />
                 </View>
@@ -217,7 +217,7 @@ function OptionsFareType() {
                 />
                 <View>
                     <Image 
-                        style={{width: 40,height: 25}} 
+                        style={{width: 40,height: 25, marginLeft: 15}} 
                         source={require('./images/senior_opal.png')} 
                     />
                 </View>
@@ -236,7 +236,7 @@ function OptionsFareType() {
                 />
                 <View>
                     <Image 
-                        style={{width: 40,height: 25}} 
+                        style={{width: 40,height: 25, marginLeft: 15}} 
                         source={require('./images/concession_opal.png')} 
                     />
                 </View>
