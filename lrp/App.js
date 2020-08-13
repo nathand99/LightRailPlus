@@ -89,7 +89,7 @@ export default function App() {
       >
         <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
         <Stack.Screen name="Log In" component={LogInScreen} />
-        <Stack.Screen name="Main" component={MainScreen} />
+        <Stack.Screen name="Main" component={MainScreen} options={{ headerShown: false }}/>
         <Stack.Screen name="Sign Up" component={SignUpScreen} />
         <Stack.Screen name="Payment Details" component={PaymentDetailsScreen} />
         <Stack.Screen name="Card Type" component={CardTypeScreen} />
