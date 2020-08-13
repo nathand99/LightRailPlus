@@ -611,7 +611,7 @@ const tripStyles = StyleSheet.create({
   tripPrice: {
     flex: 3,
     display: 'flex',
-    fontFamily: 'Roboto',
+    fontFamily: 'Roboto_400Regular',
     fontSize: 24,
     fontWeight: 'bold',
     paddingVertical: 20,
