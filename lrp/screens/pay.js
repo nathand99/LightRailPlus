@@ -61,7 +61,7 @@ function pay({ navigation }) {
 
             {/* Confirm/Cancel Buttons */}
             <View style={modalStyles.modal}>
-              {/* <View style={{backgroundColor:'green'}}> */}
+              {/* <View sty.le={{backgroundColor:'green'}}> */}
                 <TouchableOpacity style={{alignSelf: 'center', backgroundColor:'#34a032',width:'80%', borderRadius: 25}} onPress={() => {
                   navigation.navigate('Tapped On'),
                   confirmTapOn()}}>
@@ -488,12 +488,14 @@ const styles = StyleSheet.create({
   },
 
   modal: {
+    marginVertical: ((Dimensions.get('window').height-500)/2),
     flex: 1,
     alignItems: 'stretch',
     justifyContent: 'space-around',
     backgroundColor:'#ececec',
     borderRadius: 25,
-    maxHeight:Dimensions.get('window').height * 0.8
+    // maxHeight:Dimensions.get('window').height * 0.8
+    maxHeight: 500,
   },
 
   
@@ -566,7 +568,8 @@ const modalStyles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign:'center',
     fontSize: 40,
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
+    paddingVertical: 10,
   }
 })
 
@@ -609,6 +612,7 @@ const tripStyles = StyleSheet.create({
   },
   
   tripPrice: {
+    textAlign: "right",
     flex: 3,
     display: 'flex',
     fontFamily: 'Roboto_400Regular',

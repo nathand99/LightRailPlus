@@ -12,16 +12,8 @@ export default class SignUpScreen extends React.Component {
     render() {
         return (
             <View style={styles.container}> 
-                <View style={styles.topbar}> 
-                    <TouchableOpacity style={styles.back} 
-                        onPress={() => this.props.navigation.navigate('SignUp')}>
-                        <Text style={styles.loginText}>←</Text>
-                    </TouchableOpacity>
-                    <Text style={styles.bigtext}>REGISTER</Text>
-                </View>
-                <Text style={styles.title}>PAYMENT DETAILS</Text>
-                <KeyboardAvoidingView style={styles.inputcontainer}>  
-                <ScrollView> 
+                <KeyboardAvoidingView behavior={"position"} style={styles.inputcontainer}>  
+                {/* <View> */}
                     <Text style={styles.prompt}>CARD NAME</Text>
                     {/*} card name input */}
                     <View style={styles.inputView} >      
@@ -33,7 +25,7 @@ export default class SignUpScreen extends React.Component {
                     <Text style={styles.prompt}>CARD NUMBER</Text>
                     {/*} card number input */}
                     <View style={styles.inputView} >      
-                        <TextInput  
+                        <TextInput 
                         style={styles.inputText}
                         onChangeText={text => this.setState({email:text})}
                         />
@@ -55,12 +47,12 @@ export default class SignUpScreen extends React.Component {
                         />
                     </View>
                     {/*} login button - chagne this to point to where its meant to go later*/}
-                    <TouchableOpacity style={styles.loginBtn} 
-                    onPress={() => this.props.navigation.navigate('CardType')}>
-                        <Text style={styles.loginText}>NEXT</Text>
-                    </TouchableOpacity>
-                </ScrollView> 
+                {/* </View>  */}
                 </KeyboardAvoidingView>
+                    <TouchableOpacity style={styles.loginBtn} 
+                    onPress={() => this.props.navigation.navigate('Main')}>
+                        <Text style={styles.loginText}>REGISTER</Text>
+                    </TouchableOpacity>
             </View>
         );
     }
@@ -70,44 +62,21 @@ export default class SignUpScreen extends React.Component {
 // Stylesheet
 const styles = StyleSheet.create({
 
-back: {
-    color:"white",
-    fontSize:40,
-    fontWeight: "bold",
-    paddingTop: 40,
-    paddingLeft: 20,
-},
-
-bigtext: {
-    color:"white",
-    fontSize:40,
-    fontWeight: "bold",
-    paddingTop: 20,
-    paddingLeft: 40,
-    textAlign: "center",
-    textAlignVertical: "center",
-},
-topbar: {
-    flexDirection: 'row',
-    backgroundColor: '#c34242',
-    height:100,
-    width:"100%",
-    textAlignVertical: "center",
-},
-
 container: {
+    width: '100%',
     flex: 1,
-    backgroundColor: '#e5e5e5',
+    backgroundColor: '#ececec',
     alignItems: 'center',
     justifyContent: 'center',
 },
 
 inputcontainer: {
+    width: '100%',
     flex: 1,
-    backgroundColor: '#e5e5e5',
+    backgroundColor: '#ececec',
     alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: 20,
+    justifyContent: 'flex-start',
+    paddingTop: 50,
 },
 
 buttonText: {
@@ -132,53 +101,71 @@ logoText: {
 },
 
 inputView:{
-    width:300,
-    backgroundColor:"#ECECEC",
-    borderWidth:0.1,
-    borderRadius:25,
-    borderColor:"black",
-    height:50,
-    marginTop:8,
-    marginBottom:20,
-    justifyContent:"center",
-    padding:10,
-    //paddingTop:30,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: "center",
+    
+    borderWidth: 2,
+    borderColor: '#c34242',
+    borderRadius: 4,
+    
+    width: '80%',
+    height: 50,
+    marginBottom: 25,
   },
 
   inputText: {
-    height:50,
-    color:"black"
+    height: 45,
+    backgroundColor: '#eaeaea',
+
+
+    padding: 10,
+    fontSize: 20,
+
+    width: '100%',
   },
 
   title:{
     color:"#c34242",
-    fontSize:25,
-    paddingTop:10,
+    fontFamily: 'Roboto_700Bold',
+    fontSize: 28,
+    paddingBottom: 20,
   },
 
   prompt:{
-    color:"#c34242",
-    fontSize:25,
-    //alignItems: 'left',
-   // justifyContent: 'left'
-    //marginBottom:30
-    //marginBottom:30
+    fontFamily: 'Roboto_700Bold',
+    fontSize: 26,
+    textTransform: "uppercase",
+
+    color: "#c34242",
+
+    paddingBottom: 10,
   },
 
   loginBtn:{
-    width:250,
-    height:55,
-    backgroundColor:"#c34242",
-    borderRadius:25,
-    alignItems:"center",
-    justifyContent:"center",
-    marginTop:40,
-    marginBottom:0,
-    alignSelf:"center",
+    width: 250,
+    height: 55,
+
+    margin: 10,
+
+    borderRadius: 5000,
+
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    backgroundColor: '#c34242',
+    shadowOffset:{  width: 0,  height: 4,  },
+    shadowColor: 'black',
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+
+    marginBottom: 50,
   },
 
   loginText: {
     color:"white",
-    fontSize:30
+    fontSize: 28,
+    fontFamily: 'Roboto_700Bold',
   }
 });

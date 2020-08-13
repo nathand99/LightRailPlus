@@ -13,26 +13,19 @@ export default class CardTypeScreen extends React.Component {
     };
 
     state = {
-        //checked: false,
+        checked: false,
     };
     
     render() {
         const { checked1 } = this.state;
         return (
             <View style={optionsStyles.container}>
-                <View style={styles.topbar}> 
-                    <TouchableOpacity style={styles.back} 
-                        onPress={() => this.props.navigation.navigate('PaymentDetails')}>
-                        <Text style={styles.loginText}>←</Text>
-                    </TouchableOpacity>
-                    <Text style={styles.bigtext}>REGISTER</Text>
-                </View>
                 <Text style={styles.prompt}>SET CARD TYPE</Text>
 
                 {/* ADULT FARE */}
                 <View style={optionsStyles.lightRow}>
                     <CheckBox
-                       value={this.state.checked}
+                        value={this.state.checked}
                         onValueChange={() => this.setState({ checked: !this.state.checked })} 
                         color='#c34242'
                     />
