@@ -27,14 +27,14 @@ export default class HomeScreen extends React.Component {
 
                 {/* Sign Up Button */}
                 <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('SignUp')}
+                onPress={() => this.props.navigation.navigate('Sign Up')}
                 style={styles.button}>
                 <Text style={styles.buttonText}>SIGN UP</Text>
                 </TouchableOpacity>
 
                 {/* Log In Button */}
                 <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('LogIn')}
+                onPress={() => this.props.navigation.navigate('Log In')}
                 style={styles.button}>
                 <Text style={styles.buttonText}>LOG IN</Text>
                 </TouchableOpacity>

@@ -12,15 +12,8 @@ export default class LogInScreen extends React.Component {
     render() {
         return (
             <View style={styles.container}> 
-                <View style={styles.topbar}> 
-                    <TouchableOpacity style={styles.back} 
-                    onPress={() => this.props.navigation.navigate('Home')}>
-                        <Text style={styles.loginText}>←</Text>
-                    </TouchableOpacity>
-                    <Text style={styles.bigtext}>LOG IN</Text>
-                </View>
                 <KeyboardAvoidingView style={styles.inputcontainer}>  
-                <ScrollView>  
+                <View>  
                     <Text style={styles.prompt}>EMAIL ADDRESS</Text>
                     {/*} email input */}
                     <View style={styles.inputView}>      
@@ -39,7 +32,7 @@ export default class LogInScreen extends React.Component {
                     onPress={() => this.props.navigation.navigate('Home')}>
                         <Text style={styles.forgot}>Forgot Password?</Text>
                     </TouchableOpacity>            
-                </ScrollView> 
+                </View> 
                 </KeyboardAvoidingView>
                 {/*} login button*/}
                 <TouchableOpacity style={styles.loginBtn} 
@@ -79,14 +72,16 @@ topbar: {
 },
 
 inputcontainer: {
+    width: '100%',
     flex: 1,
     backgroundColor: '#e5e5e5',
     alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: 20,
+    justifyContent: 'flex-start',
+    paddingTop: 50,
 },
 
 container: {
+    width: '100%',
     flex: 1,
     backgroundColor: '#e5e5e5',
     alignItems: 'center',
@@ -94,47 +89,91 @@ container: {
 },
 
 inputView:{
-    display: "flex",
-    width:300,
-    backgroundColor:"#ECECEC",
-    borderWidth:0.1,
-    borderRadius:25,
-    borderColor:"black",
-    height:50,
-    marginTop:8,
-    marginBottom:20,
-    justifyContent:"center",
-    padding:10,
+
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: "center",
+    
+    borderWidth: 2,
+    borderColor: '#c34242',
+    borderRadius: 4,
+    
+    width: '90%',
+    height: 50,
+    marginBottom: 25,
+
+    // display: "flex",
+    // width:300,
+    // backgroundColor:"#ECECEC",
+    // borderWidth:0.1,
+    // borderRadius:25,
+    // borderColor:"black",
+    // height:50,
+    // marginTop:8,
+    // marginBottom:20,
+    // justifyContent:"center",
+    // padding:10,
+
   },
 
   inputText: {
-    height:"100%",
-    color:"black"
+
+    height: 45,
+    backgroundColor: '#eaeaea',
+
+
+    padding: 10,
+    fontSize: 20,
+
+    width: '90%',
+    // height:"100%",
+    // color:"black"
   },
 
   forgot:{
     color:"#c34242",
-    fontSize:11,
+    fontFamily: 'Roboto_400Regular',
+    fontSize: 18,
     textAlign: "center",
   },
 
   prompt:{
-    color:"#c34242",
-    fontSize:25,
-  },
+    fontFamily: 'Roboto_700Bold',
+    fontSize: 26,
+    textTransform: "uppercase",
+
+    color: "#c34242",
+
+    paddingBottom: 10,
+},
 
   loginBtn:{
-    width:250,
-    height:55,
-    backgroundColor:"#c34242",
-    borderRadius:25,
-    alignItems:"center",
-    justifyContent:"center",
-    marginTop:10,
-    marginBottom:40
+
+    width: 250,
+    height: 55,
+
+    margin: 10,
+
+    borderRadius: 5000,
+
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    backgroundColor: '#c34242',
+    shadowOffset:{  width: 0,  height: 4,  },
+    shadowColor: 'black',
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+
+    marginBottom: 50,
+
   },
+
   loginText: {
     color:"white",
-    fontSize:30
+    fontSize: 28,
+    fontFamily: 'Roboto_700Bold',
   }
+
 });

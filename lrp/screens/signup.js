@@ -12,17 +12,10 @@ export default class SignUpScreen extends React.Component {
     render() {
         return (
             <View style={styles.container}> 
-            <View style={styles.topbar}> 
-                <TouchableOpacity style={styles.back} 
-                    onPress={() => this.props.navigation.navigate('Home')}>
-                    <Text style={styles.loginText}>←</Text>
-                </TouchableOpacity>
-                <Text style={styles.bigtext}>REGISTER</Text>
-            </View>
+            <KeyboardAvoidingView style={styles.inputcontainer}> 
             <Text style={styles.title}>PERSONAL DETAILS</Text>
-    
-            <KeyboardAvoidingView style={styles.inputcontainer}>  
-            <ScrollView> 
+            <View>
+
                 <Text style={styles.prompt}>NAME</Text>
                 {/*} name input */}
                 <View style={styles.inputView} >      
@@ -51,12 +44,12 @@ export default class SignUpScreen extends React.Component {
                         />
                     </View>
                 {/*} next button button - goto payment details*/}
+            </View>
+            </KeyboardAvoidingView>
                 <TouchableOpacity style={styles.loginBtn1} 
-                onPress={() => this.props.navigation.navigate('PaymentDetails')}>
+                onPress={() => this.props.navigation.navigate('Payment Details')}>
                     <Text style={styles.loginText}>NEXT</Text>
                 </TouchableOpacity>
-            </ScrollView> 
-            </KeyboardAvoidingView>
             </View>
         );
     }
@@ -90,6 +83,7 @@ topbar: {
 },
 
 container: {
+    width: '100%',
     flex: 1,
     backgroundColor: '#e5e5e5',
     alignItems: 'center',
@@ -97,11 +91,12 @@ container: {
 },
 
 inputcontainer: {
+    width: '100%',
     flex: 1,
     backgroundColor: '#e5e5e5',
     alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: 20,
+    justifyContent: 'flex-start',
+    paddingTop: 50,
 },
 
 buttonText: {
@@ -126,37 +121,45 @@ logoText: {
 },
 
 inputView:{
-    width:300,
-    backgroundColor:"#ECECEC",
-    borderWidth:0.1,
-    borderRadius:25,
-    borderColor:"black",
-    height:50,
-    marginTop:8,
-    marginBottom:20,
-    justifyContent:"center",
-    padding:10,
-    //paddingTop:30,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: "center",
+    
+    borderWidth: 2,
+    borderColor: '#c34242',
+    borderRadius: 4,
+    
+    width: '80%',
+    height: 50,
+    marginBottom: 25,
   },
 
   inputText: {
-    height:50,
-    color:"black"
+    height: 45,
+    backgroundColor: '#eaeaea',
+
+
+    padding: 10,
+    fontSize: 20,
+
+    width: '100%',
   },
 
   title:{
     color:"#c34242",
-    fontSize:25,
-    paddingTop:10,
+    fontFamily: 'Roboto_700Bold',
+    fontSize: 28,
+    paddingBottom: 20,
   },
 
   prompt:{
-    color:"#c34242",
-    fontSize:25,
-    //alignItems: 'left',
-   // justifyContent: 'left'
-    //marginBottom:30
-    //marginBottom:30
+    fontFamily: 'Roboto_700Bold',
+    fontSize: 26,
+    textTransform: "uppercase",
+
+    color: "#c34242",
+
+    paddingBottom: 10,
   },
 
 
@@ -172,15 +175,24 @@ inputView:{
     alignSelf:"center",
   },
   loginBtn1:{
-    width:250,
-    height:55,
-    backgroundColor:"#c34242",
-    borderRadius:25,
-    alignItems:"center",
-    justifyContent:"center",
-    marginTop:110,
-    marginBottom:0,
-    alignSelf:"center",
+    width: 250,
+    height: 55,
+
+    margin: 10,
+
+    borderRadius: 5000,
+
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    backgroundColor: '#c34242',
+    shadowOffset:{  width: 0,  height: 4,  },
+    shadowColor: 'black',
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+
+    marginBottom: 50,
   },
   loginBtn3:{
     width:250,
@@ -195,6 +207,7 @@ inputView:{
   },
   loginText: {
     color:"white",
-    fontSize:30
+    fontSize: 28,
+    fontFamily: 'Roboto_700Bold',
   }
 });

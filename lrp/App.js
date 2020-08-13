@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler';
 import React from 'react';
+import { View } from 'react-native';
 import { AppLoading } from 'expo';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -50,14 +51,48 @@ export default function App() {
       
       <Stack.Navigator 
         initialRouteName="Home"
-        screenOptions={{ headerShown: false }}
+        screenOptions={{
+
+          headerBackTitleVisible: false,
+          headerLeft: () => (<View/>),
+  
+          headerStyle: {
+
+              backgroundColor: '#c34242',
+              height: 115,
+              
+              shadowOffset:{ width: 0,  height: 4 },
+              shadowColor: 'black',
+              shadowOpacity: 0.25,
+              shadowRadius: 4,
+              elevation: 1,
+
+              
+          },
+
+          headerTintColor: '#ececec',
+
+          headerTitleStyle: {
+
+              fontFamily: 'Roboto_700Bold',
+              fontSize: 32,
+              textTransform: "uppercase",
+
+              shadowOffset:{ width: 0,  height: 4 },
+              shadowColor: 'black',
+              shadowOpacity: 0.25,
+              shadowRadius: 4,
+              elevation: 1,
+          },
+          
+        }}
       >
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="LogIn" component={LogInScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name="Log In" component={LogInScreen} />
         <Stack.Screen name="Main" component={MainScreen} />
-        <Stack.Screen name="SignUp" component={SignUpScreen} />
-        <Stack.Screen name="PaymentDetails" component={PaymentDetailsScreen} />
-        <Stack.Screen name="CardType" component={CardTypeScreen} />
+        <Stack.Screen name="Sign Up" component={SignUpScreen} />
+        <Stack.Screen name="Payment Details" component={PaymentDetailsScreen} />
+        <Stack.Screen name="Card Type" component={CardTypeScreen} />
       </Stack.Navigator>
 
     </NavigationContainer>
